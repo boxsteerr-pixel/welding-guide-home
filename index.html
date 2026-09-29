@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#123b5d">
+  <meta name="description" content="八台焊机操作工快速处置手册统一入口">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./assets/icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>操作工快速处置手册</title>
+</head>
+<body>
+  <a class="skip-link" href="#device-grid">跳到设备列表</a>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="hero__status">
+        <span>焊机作业现场</span>
+        <span id="network-status" role="status">在线</span>
+      </div>
+      <p class="eyebrow">WELDING QUICK RESPONSE</p>
+      <h1>操作工快速处置手册</h1>
+      <p class="hero__copy">选择设备，进入对应的独立操作手册</p>
+      <button id="install-button" class="install-button" type="button" hidden>安装到桌面</button>
+    </header>
+
+    <main>
+      <section class="device-panel" aria-labelledby="device-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">设备入口</p>
+            <h2 id="device-title">请选择焊机编号</h2>
+          </div>
+          <span class="availability"><i aria-hidden="true"></i> 2 台可用</span>
+        </div>
+
+        <div id="device-grid" class="device-grid">
+          <a class="device-card device-card--ready" href="https://boxsteerr-pixel.github.io/welding-guide/" aria-label="进入101焊机正式手册">
+            <span class="device-card__number">101</span>
+            <span class="device-card__state">正式使用</span>
+            <span class="device-card__action">进入手册 <span aria-hidden="true">›</span></span>
+          </a>
+          <a class="device-card device-card--ready" href="https://boxsteerr-pixel.github.io/welding-guide-108/" aria-label="进入108焊机手册">
+            <span class="device-card__number">108</span>
+            <span class="device-card__state">新设备手册</span>
+            <span class="device-card__action">进入手册 <span aria-hidden="true">›</span></span>
+          </a>
+          <article class="device-card device-card--pending" aria-disabled="true">
+            <span class="device-card__number">102</span><span class="device-card__state">待建设</span>
+          </article>
+          <article class="device-card device-card--pending" aria-disabled="true">
+            <span class="device-card__number">122</span><span class="device-card__state">待建设</span>
+          </article>
+          <article class="device-card device-card--pending" aria-disabled="true">
+            <span class="device-card__number">202</span><span class="device-card__state">待建设</span>
+          </article>
+          <article class="device-card device-card--pending" aria-disabled="true">
+            <span class="device-card__number">401</span><span class="device-card__state">待建设</span>
+          </article>
+          <article class="device-card device-card--pending" aria-disabled="true">
+            <span class="device-card__number">411</span><span class="device-card__state">待建设</span>
+          </article>
+          <article class="device-card device-card--pending" aria-disabled="true">
+            <span class="device-card__number">502</span><span class="device-card__state">待建设</span>
+          </article>
+        </div>
+      </section>
+
+      <aside class="site-note" aria-label="使用说明">
+        <span class="site-note__icon" aria-hidden="true">i</span>
+        <p><strong>每台设备独立运行</strong><br>设备手册可由现场二维码直接打开；入口故障不会影响已安装的设备手册。</p>
+      </aside>
+    </main>
+
+    <footer>统一入口 · 本页不缓存其他设备内容</footer>
+  </div>
+  <script src="./js/app.js" defer></script>
+</body>
+</html>
