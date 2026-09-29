@@ -55,7 +55,8 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .hero__status span.offline::before { background: #ffc56e; }
 .eyebrow { position: relative; z-index: 1; margin: 30px 0 5px; color: #8ed8ff; font-size: 11px; font-weight: 800; letter-spacing: .16em; }
 h1 { position: relative; z-index: 1; margin: 0; max-width: 15em; font-size: clamp(26px, 7vw, 36px); line-height: 1.16; letter-spacing: .02em; }
-.hero__copy { position: relative; z-index: 1; margin: 9px 0 0; color: rgba(255,255,255,.82); font-size: 15px; }
+.maker { position: relative; z-index: 1; display: inline-block; margin: 9px 0 0; padding: 3px 8px; color: #d8f3ff; border: 1px solid rgba(142,216,255,.42); border-radius: 4px; font-size: 10px; font-weight: 800; letter-spacing: .14em; }
+.hero__copy { position: relative; z-index: 1; margin: 8px 0 0; color: rgba(255,255,255,.82); font-size: 15px; }
 .install-button { position: relative; z-index: 2; min-height: 44px; margin-top: 16px; padding: 0 16px; color: #fff; border: 1px solid rgba(255,255,255,.5); border-radius: 8px; background: rgba(255,255,255,.12); font-weight: 700; }
 .device-panel { margin-top: -1px; padding: 22px 0 8px; }
 .section-heading { display: flex; gap: 12px; align-items: end; justify-content: space-between; margin-bottom: 14px; }
