@@ -182,9 +182,10 @@ h1 > span:first-child { color: white; }
 .device-card:first-child .device-card__action span { color: #20ccff; background: rgba(53,214,255,.16); }
 .site-note { background: rgba(255,255,255,.5); }
 @media (max-width: 619px) {
-  /* Keep the nozzle on the right, with a dedicated quiet zone for the title. */
+  /* Fit the entire landscape photo: cover would crop the spark fan on phones. */
   .hero { min-height: 400px; padding-top: calc(18px + env(safe-area-inset-top)); }
-  .hero::before { background: linear-gradient(90deg, rgba(2,20,43,.94), rgba(2,20,43,.74) 44%, rgba(2,20,43,.08) 78%), linear-gradient(0deg, rgba(2,20,43,.78), transparent 48%); }
+  .hero__illustration { inset: 82px 0 auto; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; object-position: center; }
+  .hero::before { background: linear-gradient(90deg, rgba(2,20,43,.65), rgba(2,20,43,.28) 48%, transparent 72%), linear-gradient(180deg, #061c36 64px, transparent 108px, transparent 300px, rgba(6,28,54,.65) 365px); }
   .hero__status { padding: 5px 0 12px; border-bottom: 1px solid rgba(188,218,255,.16); }
   .eyebrow { margin-top: 28px; font-size: 8px; letter-spacing: .15em; }
   h1 { max-width: 68%; font-size: clamp(30px, 8.5vw, 40px); line-height: 1.2; }
