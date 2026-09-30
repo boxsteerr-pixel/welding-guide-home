@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#123b5d">
+  <meta name="theme-color" content="#102e46">
   <meta name="description" content="八台焊机操作工快速处置手册统一入口">
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" href="./assets/icons/icon.svg" type="image/svg+xml">
@@ -15,24 +15,30 @@
   <div class="app-shell">
     <header class="hero">
       <div class="hero__status">
-        <span>焊机作业现场</span>
+        <span class="site-brand"><span class="brand-mark" aria-hidden="true">↯</span> 焊机作业现场</span>
         <span id="network-status" role="status">在线</span>
       </div>
+      <img class="hero__illustration" src="./assets/portal-machine.svg" alt="" aria-hidden="true">
       <p class="eyebrow">WELDING QUICK RESPONSE</p>
-      <h1>操作工快速处置手册</h1>
+      <h1><span>操作工</span>快速处置手册<span class="title-dot" aria-hidden="true">.</span></h1>
       <p class="maker">MADE BY FANGPING</p>
-      <p class="hero__copy">选择设备，进入对应的独立操作手册</p>
+      <p class="hero__copy">现场问题，快速找到处置方法。</p>
       <button id="install-button" class="install-button" type="button" hidden>安装到桌面</button>
+      <div class="hero__features" aria-label="平台特点">
+        <span><b>08</b> 设备入口</span>
+        <span><b>↗</b> 一键直达</span>
+        <span><b>▣</b> 独立手册</span>
+      </div>
     </header>
 
     <main>
       <section class="device-panel" aria-labelledby="device-title">
         <div class="section-heading">
           <div>
-            <p class="section-kicker">设备入口</p>
+            <p class="section-kicker">SELECT YOUR MACHINE</p>
             <h2 id="device-title">请选择焊机编号</h2>
           </div>
-          <span class="availability"><i aria-hidden="true"></i> 8 台入口</span>
+          <span class="availability"><i aria-hidden="true"></i> 全部已上线</span>
         </div>
 
         <div id="device-grid" class="device-grid">
@@ -43,7 +49,7 @@
           </a>
           <a class="device-card device-card--ready" href="https://boxsteerr-pixel.github.io/welding-guide-108/" aria-label="进入108焊机手册">
             <span class="device-card__number">108</span>
-            <span class="device-card__state">新设备手册</span>
+            <span class="device-card__state">内容待录入</span>
             <span class="device-card__action">进入手册 <span aria-hidden="true">›</span></span>
           </a>
           <a class="device-card device-card--ready" href="https://boxsteerr-pixel.github.io/welding-guide-102/" aria-label="进入102焊机手册框架">
@@ -80,12 +86,12 @@
       </section>
 
       <aside class="site-note" aria-label="使用说明">
-        <span class="site-note__icon" aria-hidden="true">i</span>
-        <p><strong>每台设备独立运行</strong><br>设备手册可由现场二维码直接打开；入口故障不会影响已安装的设备手册。</p>
+        <span class="site-note__icon" aria-hidden="true">↗</span>
+        <p><strong>把手册带到作业现场</strong><br>可通过设备二维码直达手册，也可进入对应手册后安装到桌面。</p>
       </aside>
     </main>
 
-    <footer>统一入口 · 本页不缓存其他设备内容</footer>
+    <footer><span>WELDING GUIDE</span><span>现场快速查询 · MADE BY FANGPING</span></footer>
   </div>
   <script src="./js/app.js" defer></script>
 </body>
