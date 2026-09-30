@@ -181,6 +181,19 @@ h1 > span:first-child { color: white; }
 .device-card:first-child { background: radial-gradient(circle at 100% 0, #1475b6, transparent 75%), #072f59; border-color: #218ee0; }
 .device-card:first-child .device-card__action span { color: #20ccff; background: rgba(53,214,255,.16); }
 .site-note { background: rgba(255,255,255,.5); }
+.brand-mark { width: 36px; height: 42px; border: 0; border-radius: 0; background: none; }
+.brand-mark img { display: block; width: 100%; height: 100%; }
+.hero-feature { display: flex; align-items: center; justify-content: center; gap: 6px; min-width: 0; min-height: 74px; padding: 8px 5px; border: 1px solid rgba(138,201,255,.28); border-radius: 10px; background: rgba(2,32,70,.65); }
+.feature-icon { flex: 0 0 30px; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: radial-gradient(circle at 35% 25%, #095999, #073471 70%); box-shadow: 0 0 14px rgba(0,136,255,.12); }
+.feature-icon--target { background: radial-gradient(circle at 35% 25%, #00637b, #043c58 70%); }
+.feature-icon img { display: block; width: 24px; height: 24px; }
+.feature-copy { display: flex; flex-direction: column; gap: 3px; white-space: nowrap; }
+.feature-copy strong { color: #eef6ff; font-size: 11px; font-weight: 600; }
+.feature-copy small { color: #a9c6e4; font-size: 9px; }
+@media (max-width: 359px) {
+  .hero-feature { flex-direction: column; gap: 7px; min-height: 97px; }
+  .feature-copy { text-align: center; }
+}
 @media (max-width: 619px) {
   /* Fit the entire landscape photo: cover would crop the spark fan on phones. */
   .hero { min-height: 400px; padding-top: calc(18px + env(safe-area-inset-top)); }
@@ -204,4 +217,9 @@ h1 > span:first-child { color: white; }
   .title-manual { color: #fff; }
   .hero__features { max-width: 520px; margin-top: 34px; padding: 0; }
   .hero__features span { min-height: 65px; }
+  .hero-feature { min-height: 82px; gap: 10px; padding: 12px 9px; }
+  .feature-icon { flex-basis: 44px; width: 44px; height: 44px; }
+  .feature-icon img { width: 34px; height: 34px; }
+  .feature-copy strong { font-size: 14px; }
+  .feature-copy small { font-size: 11px; }
 }
