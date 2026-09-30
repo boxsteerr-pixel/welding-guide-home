@@ -154,3 +154,38 @@ footer span:first-child { color: #6b8090; font-size: 9px; font-weight: 800; lett
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
 }
+
+/* Photographic welding backdrop; all controls remain accessible HTML. */
+:root { --background: #eaf5ff; --orange: #35d6ff; }
+body {
+  background: radial-gradient(ellipse at 15% 75%, #d2eaff, transparent 65%), #eaf5ff;
+}
+.app-shell {
+  background: repeating-linear-gradient(135deg, transparent 0 7px, rgba(255,255,255,.16) 7px 9px), linear-gradient(155deg, #f3faff, #dceeff);
+}
+.hero { min-height: 420px; padding-bottom: 34px; background: #061c36; border-radius: 0; }
+.hero__illustration { z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 65% center; opacity: 1; }
+.hero::before { inset: 0; width: auto; height: auto; border: 0; border-radius: 0; box-shadow: none; background: linear-gradient(90deg, rgba(2,20,43,.88), rgba(2,20,43,.42) 55%, rgba(2,20,43,.08)), linear-gradient(0deg, rgba(2,20,43,.55), transparent 45%); }
+.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 28px; background: linear-gradient(165deg, #26d5ff, #0b79f5 55%, #eaf5ff 56%); clip-path: polygon(0 0, 68% 70%, 73% 25%, 100% 25%, 100% 100%, 0 100%); }
+.brand-mark { border-color: rgba(53,214,255,.5); background: rgba(0,133,255,.18); }
+.eyebrow { margin-top: 54px; color: #b4d6f3; }
+h1 { text-shadow: 0 2px 18px rgba(0,12,32,.5); color: #48d4ff; }
+h1 > span:first-child { color: white; }
+.maker { color: #b6eaff; }
+.hero__copy { color: #e0ecfa; }
+.hero__features { margin-top: 32px; padding: 0; border: 0; gap: 8px; }
+.hero__features span { justify-content: center; min-height: 54px; padding: 8px 4px; border: 1px solid rgba(138,201,255,.28); border-radius: 9px; background: rgba(2,32,70,.65); color: #e5f2ff; }
+.hero__features span + span { border-left: 1px solid rgba(138,201,255,.28); }
+.section-kicker { color: #087fea; }
+.device-card { border-color: #c7deef; box-shadow: 0 8px 20px -10px rgba(13,72,123,.3); }
+.device-card:first-child { background: radial-gradient(circle at 100% 0, #1475b6, transparent 75%), #072f59; border-color: #218ee0; }
+.device-card:first-child .device-card__action span { color: #20ccff; background: rgba(53,214,255,.16); }
+.site-note { background: rgba(255,255,255,.5); }
+@media (min-width: 620px) {
+  .hero { min-height: 450px; padding-bottom: 42px; }
+  .hero__illustration { inset: 0; width: 100%; height: 100%; opacity: 1; object-position: center; }
+  .eyebrow { margin-top: 58px; }
+  h1 { font-size: 48px; }
+  .hero__features { max-width: 520px; margin-top: 34px; padding: 0; }
+  .hero__features span { min-height: 65px; }
+}

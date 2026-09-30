@@ -1,4 +1,4 @@
-const CACHE_NAME = "welding-guide-home-v4";
+const CACHE_NAME = "welding-guide-home-v5";
 const APP_ROOT = new URL("./", self.location.href);
 const CORE_ASSETS = [
   "./",
@@ -7,7 +7,7 @@ const CORE_ASSETS = [
   "./js/app.js",
   "./manifest.json",
   "./assets/icons/icon.svg",
-  "./assets/portal-machine.svg",
+  "./assets/welding-hero.png",
   "./assets/icons/icon-192.png",
   "./assets/icons/icon-512.png"
 ].map(function (path) { return new URL(path, APP_ROOT).toString(); });
