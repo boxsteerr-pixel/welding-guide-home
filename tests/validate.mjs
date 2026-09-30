@@ -22,7 +22,7 @@ assert.equal((html.match(/<a class="device-card device-card--ready"/g) || []).le
 assert.equal(manifest.start_url, "./");
 assert.equal(manifest.scope, "./");
 assert.equal(manifest.icons.length, 2);
-assert.match(sw, /welding-guide-home-v5/);
+assert.match(sw, /welding-guide-home-v6/);
 assert.match(html, /\.\/assets\/welding-hero\.png/);
 assert.match(sw, /\.\/assets\/welding-hero\.png/);
 assert.doesNotMatch(sw, /welding-guide-108|welding-guide\//);

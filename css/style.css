@@ -164,7 +164,7 @@ body {
   background: repeating-linear-gradient(135deg, transparent 0 7px, rgba(255,255,255,.16) 7px 9px), linear-gradient(155deg, #f3faff, #dceeff);
 }
 .hero { min-height: 420px; padding-bottom: 34px; background: #061c36; border-radius: 0; }
-.hero__illustration { z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 65% center; opacity: 1; }
+.hero__illustration { z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 82% center; opacity: 1; }
 .hero::before { inset: 0; width: auto; height: auto; border: 0; border-radius: 0; box-shadow: none; background: linear-gradient(90deg, rgba(2,20,43,.88), rgba(2,20,43,.42) 55%, rgba(2,20,43,.08)), linear-gradient(0deg, rgba(2,20,43,.55), transparent 45%); }
 .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 28px; background: linear-gradient(165deg, #26d5ff, #0b79f5 55%, #eaf5ff 56%); clip-path: polygon(0 0, 68% 70%, 73% 25%, 100% 25%, 100% 100%, 0 100%); }
 .brand-mark { border-color: rgba(53,214,255,.5); background: rgba(0,133,255,.18); }
@@ -181,11 +181,26 @@ h1 > span:first-child { color: white; }
 .device-card:first-child { background: radial-gradient(circle at 100% 0, #1475b6, transparent 75%), #072f59; border-color: #218ee0; }
 .device-card:first-child .device-card__action span { color: #20ccff; background: rgba(53,214,255,.16); }
 .site-note { background: rgba(255,255,255,.5); }
+@media (max-width: 619px) {
+  /* Keep the nozzle on the right, with a dedicated quiet zone for the title. */
+  .hero { min-height: 400px; padding-top: calc(18px + env(safe-area-inset-top)); }
+  .hero::before { background: linear-gradient(90deg, rgba(2,20,43,.94), rgba(2,20,43,.74) 44%, rgba(2,20,43,.08) 78%), linear-gradient(0deg, rgba(2,20,43,.78), transparent 48%); }
+  .hero__status { padding: 5px 0 12px; border-bottom: 1px solid rgba(188,218,255,.16); }
+  .eyebrow { margin-top: 28px; font-size: 8px; letter-spacing: .15em; }
+  h1 { max-width: 68%; font-size: clamp(30px, 8.5vw, 40px); line-height: 1.2; }
+  .title-response, .title-manual { display: block; }
+  .title-manual { color: #fff; }
+  .maker { margin-top: 12px; }
+  .hero__copy { max-width: 72%; font-size: 11px; text-shadow: 0 1px 8px #00152d; }
+  .install-button { margin-top: 12px; border-color: rgba(53,214,255,.55); background: rgba(2,25,52,.78); color: #d9f5ff; }
+  .hero__features { margin-top: 28px; }
+}
 @media (min-width: 620px) {
   .hero { min-height: 450px; padding-bottom: 42px; }
   .hero__illustration { inset: 0; width: 100%; height: 100%; opacity: 1; object-position: center; }
   .eyebrow { margin-top: 58px; }
   h1 { font-size: 48px; }
+  .title-manual { color: #fff; }
   .hero__features { max-width: 520px; margin-top: 34px; padding: 0; }
   .hero__features span { min-height: 65px; }
 }
