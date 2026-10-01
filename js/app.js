@@ -38,6 +38,8 @@
   const hero = document.querySelector(".hero");
   const photo = document.querySelector(".hero__illustration");
   const effect = document.querySelector(".welding-fx");
+  // Normalized photo coordinates: center of the welding flare below the nozzle.
+  const WELDING_POINT = { x: 0.821, y: 0.646 };
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let heroVisible = true;
 
@@ -53,8 +55,8 @@
     const ratioX = box.width / photo.naturalWidth;
     const ratioY = box.height / photo.naturalHeight;
     const scale = fit === "cover" ? Math.max(ratioX, ratioY) : Math.min(ratioX, ratioY);
-    effect.style.left = (box.left - heroBox.left + box.width / 2 + photo.naturalWidth * scale * (.818 - .5)) + "px";
-    effect.style.top = (box.top - heroBox.top + box.height / 2 + photo.naturalHeight * scale * (.638 - .5)) + "px";
+    effect.style.left = (box.left - heroBox.left + box.width / 2 + photo.naturalWidth * scale * (WELDING_POINT.x - .5)) + "px";
+    effect.style.top = (box.top - heroBox.top + box.height / 2 + photo.naturalHeight * scale * (WELDING_POINT.y - .5)) + "px";
     effect.hidden = false;
     updateEffectPlayback();
   }

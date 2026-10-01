@@ -9,26 +9,20 @@
 .hero-feature .feature-copy strong { display: block; max-width: none; min-height: 0; align-self: auto; font-size: 18px; line-height: 1.3; font-weight: 800; letter-spacing: -.02em; color: #f4f9ff; }
 .hero-feature:first-child .feature-copy strong { max-width: none; align-self: auto; }
 .feature-copy em { color: var(--accent); font-style: normal; }
-.hero-feature .feature-copy small { font-size: 11px; line-height: 1.65; color: #a2bbd8; }
 .topic-arrow { grid-column: 3; grid-row: 1; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: #067dea; box-shadow: inset 0 0 10px rgba(117,229,255,.24); }
 .topic-arrow img { width: 19px; height: 19px; filter: brightness(0) invert(1); }
-.topic-english { display: flex; align-items: center; gap: 8px; grid-column: 1 / -1; grid-row: 2; margin: 0; color: #85a8cf; font-size: 9px; line-height: 1; letter-spacing: .15em; }
-.topic-english::before { content: ""; width: 20px; flex: 0 0 20px; border-top: 3px solid #2bdcff; }
 @media (max-width: 359px) {
   .hero-feature { grid-template-columns: 68px minmax(0, 1fr) 26px; gap: 0 8px; padding-left: 10px; padding-right: 10px; }
   .topic-art { width: 90px; height: 90px; }
   .hero-feature .feature-copy strong { font-size: 16px; }
-  .hero-feature .feature-copy small { font-size: 10px; }
   .topic-arrow { width: 26px; height: 26px; }
 }
 @media (min-width: 700px) {
   .hero__features { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-  .hero-feature { grid-template-columns: 64px minmax(0, 1fr) 26px; grid-template-rows: minmax(78px, 1fr) 18px; min-height: 116px; padding: 8px; gap: 0 7px; }
-  .topic-art { width: 82px; height: 82px; }
+  .hero-feature { grid-template-columns: 64px minmax(0, 1fr) 26px; grid-template-rows: minmax(70px, 1fr); min-height: 92px; padding: 8px; gap: 0 7px; }
+  .topic-art { width: 72px; height: 72px; }
   .hero-feature .feature-copy strong { font-size: 15px; }
-  .hero-feature .feature-copy small { font-size: 11px; }
   .topic-arrow { width: 26px; height: 26px; }
-  .topic-english { font-size: 8px; letter-spacing: .1em; }
 }
 @media (min-width: 820px) { .hero-feature .feature-copy strong { font-size: 17px; } }
 @media (prefers-reduced-motion: reduce) { .hero-feature { transition: none; } }
@@ -42,24 +36,20 @@
 .hero-feature:nth-child(2) .topic-art { filter: sepia(1) saturate(5) hue-rotate(350deg); }
 .hero-feature:nth-child(3) .topic-art { filter: sepia(1) saturate(5) hue-rotate(75deg); }
 .topic-arrow { background: var(--accent); box-shadow: 0 0 12px rgba(var(--glow), .4); }
-.topic-english::before { border-color: var(--accent); }
 @media (max-width: 699px) {
-  .hero-feature { grid-template-columns: minmax(0, 1fr); grid-template-rows: 44px 62px 16px; justify-items: center; gap: 2px 0; min-height: 140px; padding: 6px 7px; }
+  .hero-feature { grid-template-columns: minmax(0, 1fr); grid-template-rows: 44px 38px; justify-items: center; gap: 2px 0; min-height: 100px; padding: 6px 7px; }
   .hero__features .topic-number { top: 3px; right: 7px; font-size: 23px; }
   .topic-art { grid-column: 1; grid-row: 1; width: 64px; max-width: 100%; height: 56px; }
   .feature-copy { grid-column: 1; grid-row: 2; width: 100%; gap: 3px; align-items: center; text-align: center; }
   .hero-feature .feature-copy strong { min-height: 32px; font-size: 13px; }
   .hero-feature:first-child .feature-copy strong { max-width: 4em; align-self: center; }
-  .hero-feature .feature-copy small { font-size: 10px; line-height: 1.6; color: #c2ced7; }
   .topic-arrow { position: absolute; top: 46px; right: 5px; width: 18px; height: 18px; }
   .topic-arrow img { width: 13px; height: 13px; }
-  .topic-english { grid-column: 1; grid-row: 3; width: 100%; gap: 4px; font-size: 6px; line-height: 1.4; letter-spacing: .04em; overflow-wrap: anywhere; color: #adbdca; }
-  .topic-english::before { width: 7px; flex-basis: 7px; }
 }
 @media (max-width: 359px) {
   html { min-width: 0; }
   .hero__features { gap: 6px; }
   .hero-feature { padding: 6px 5px; }
+  .hero-feature .feature-copy { padding-right: 16px; }
   .hero-feature .feature-copy strong { font-size: 12px; }
-  .hero-feature .feature-copy small { font-size: 9px; }
 }
