@@ -22,7 +22,19 @@ assert.equal((html.match(/<a class="device-card device-card--ready"/g) || []).le
 assert.equal(manifest.start_url, "./");
 assert.equal(manifest.scope, "./");
 assert.equal(manifest.icons.length, 2);
-assert.match(sw, /welding-guide-home-v12/);
+assert.match(sw, /welding-guide-home-v19/);
+assert.equal(manifest.name, "焊机操作工快速处置手册");
+assert.ok(html.includes("<title>焊机操作工快速处置手册</title>"));
+assert.ok(html.includes("./css/style.css?v=14-blue-light"));
+assert.ok(sw.includes("./css/style.css?v=14-blue-light"));
+const homeCss = await read("css/style.css");
+assert.match(homeCss, /rgba\(126,211,255,\.4\)/);
+assert.match(homeCss, /#a5dfff, #effbff/);
+const cardsCss = await read("css/topic-cards.css");
+assert.match(cardsCss, /grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/);
+for (const color of ["#00ceff", "#ffae18", "#1bef59"]) assert.ok(cardsCss.includes(color));
+assert.ok(html.includes("./css/topic-cards.css?v=16-compact"));
+assert.ok(sw.includes("./css/topic-cards.css?v=16-compact"));
 assert.match(html, /class="welding-fx" aria-hidden="true"/);
 assert.doesNotMatch(html, /effects-toggle|暂停光效|开启光效/);
 assert.doesNotMatch(await read("js/app.js"), /effectsToggle|effectsPaused/);
@@ -45,7 +57,11 @@ for (const id of ["laser-principles", "history", "safety"]) {
   const page = await read(`pages/${id}.html`);
   assert.ok(page.includes(`data-topic="${id}"`));
   assert.ok(page.includes('href="../index.html"'));
-  assert.ok(page.includes('src="../js/topics.js"'));
+  assert.ok(page.includes('src="../js/topics.js?v=18"'));
+  assert.ok(page.includes('class="topic-entry"'));
+  assert.ok(page.includes('class="entry-content"'));
+  assert.ok(page.includes('href="../css/topics.css?v=19"'));
+  assert.doesNotMatch(page, /topic-nav|专题导航/);
   assert.ok(Array.isArray(topics.topics[id].items));
 }
 assert.match(await read("css/style.css"), /prefers-reduced-motion: reduce/);
@@ -56,4 +72,10 @@ for (const icon of ["welding-head", "feature-principle", "feature-history", "fea
 assert.match(html, /\.\/assets\/welding-hero\.png/);
 assert.match(sw, /\.\/assets\/welding-hero\.png/);
 assert.doesNotMatch(sw, /welding-guide-108|welding-guide\//);
+for (const id of ["principle", "history", "safety"]) {
+  const file = `assets/images/topics/${id}-page.png`;
+  const bytes = await readFile(path.join(root, file));
+  assert.equal(bytes.subarray(1, 4).toString(), "PNG");
+  assert.ok(sw.includes(`./${file}`));
+}
 console.log("welding-guide-home validation: PASS");

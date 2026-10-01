@@ -1,15 +1,17 @@
 # Home专题入口视觉核对
 
+最新专题页面核对：2026-10-01，final result: passed。完整记录见design-qa-topics.md；只修改Home，底部三按钮已移除，共用缓存更新为welding-guide-home-v19。以下保留本地验证阶段记录，101未修改。
+
 final result: passed
 
 ## 范围与证据
 
 - 仅优化Home的三个现有专题入口，不改变设备手册或专题正文。
-- Source visual truth: C:/Users/BOXSTER/AppData/Local/Temp/codex-clipboard-e6636410-0596-4708-96dc-2cc74a20870b.png，2124×740。
-- Implementation screenshot: C:/Users/BOXSTER/.codex/visualizations/2026/09/29/01a0ed2c-53b4-7c71-be02-5d2129964e2b/cards-comparison.jpg。
+- Source visual truth: C:/Users/BOXSTER/AppData/Local/Temp/codex-clipboard-53d79b38-0391-47a3-a91c-b61781fd6efd.png，2125×740。
+- Implementation screenshot: C:/Users/BOXSTER/.codex/visualizations/2026/09/29/01a0ed2c-53b4-7c71-be02-5d2129964e2b/cards-colors-comparison.jpg。
 - 同一对照截图中：上半部为参考卡片区域，下半部为实际Home卡片组件。参考按相同约824px内容宽度缩放并裁掉上下空白，不比较参考背景的大幅留白。
 - Comparison viewport: 860×800 CSS px，截图860×800 pixels，density 1。状态为默认、未悬停、三列卡片。
-- Mobile screenshot: C:/Users/BOXSTER/.codex/visualizations/2026/09/29/01a0ed2c-53b4-7c71-be02-5d2129964e2b/cards-mobile.jpg；配置390×844 CSS视口，实际全页截图375×1884 pixels；可见区域截图cards-mobile-preview.jpg为375×811 pixels。浏览器截图排除滚动条/界面边缘；手机截图仅作响应式核对，1:1参考比较使用860×800对照图，不把捕获边缘差异当成设计问题。
+- Mobile screenshot: C:/Users/BOXSTER/.codex/visualizations/2026/09/29/01a0ed2c-53b4-7c71-be02-5d2129964e2b/cards-horizontal-mobile.jpg；配置390×844 CSS视口，可见截图375×811 pixels。浏览器截图排除滚动条/界面边缘；手机截图仅作响应式核对，参考比较使用860×800、density 1的同宽对照图。
 - Focused evidence: 同一对照截图中卡片区域已足够清晰，可辨认编号、插画、标题、副标题及英文底注；另核对390px的完整Home截图。
 
 ## 比较与修正历史
@@ -17,12 +19,13 @@ final result: passed
 1. 首轮发现[P2]旧b元素选择器把编号缩为13px；首张标题被旧align-self居中。已提高编号选择器精确度，统一左对齐。
 2. 第二轮发现[P2]插画受图像画布留白影响偏小。已增大独立PNG展示框，将桌面插画列调整为90px，并调整标题字号。
 3. 修正后重新加载并截图，三张图比例与文字层级协调；未发现剩余P0/P1/P2问题。
+4. 本轮按新参考把所有屏宽改为三列，统一蓝/橙/绿主题，保留透明PNG并通过CSS滤镜渲染图标颜色。初测发现[P2]320px下原有html最小宽度与图像展示框导致溢出；已移除窄屏最小宽度并将图片限制在卡片内。重新捕获320px与390px首页及860px对照，溢出已消除。
 
 ## 五项必检
 
-- 字体：沿用现有系统中文字体，主标题800字重、白蓝双色；小字保持清晰。手机长标题不截断。
-- 布局：插画在左、正文居中列、圆形箭头在右、英文说明在底部；700px以上三列，窄屏纵向排列横向卡片，避免三列挤压文字。
-- 颜色：深蓝半透明底、蓝色边框/内发光、青蓝强调、低透明度01–03编号。
+- 字体：沿用现有系统中文字体，800字重、白色配主题强调色；手机长标题换行不截断。
+- 布局：所有屏宽三张卡片横向并排；700px以上插画在左，手机图标在标题上方。圆形箭头及英文底注保留。
+- 颜色：蓝/橙/绿三种深色半透明底，主题边框、发光、标题、图标和箭头同步，低透明度01–03编号。
 - 图片：三张真实生成的透明3D PNG，主体完整，无文字嵌入、无拉伸、无白底；箭头使用Bootstrap官方SVG，不伪造插画。
 - 文案：激光焊接原理 / 原理概览 · 工艺基础；历史回顾 / 案例学习 · 经验总结；安全事项 / 作业提醒 · 风险防控；英文底注对应参考。
 
@@ -32,11 +35,28 @@ final result: passed
 - 三个卡片均点击进入原有页面，均能返回首页。
 - 浏览器error/warn记录为空。
 - 8台设备链接与101正式地址保留。
-- 新资源加入Home自己的Service Worker预缓存，缓存名称welding-guide-home-v12，旧缓存清理范围仍仅限Home。
+- Home缓存名称welding-guide-home-v19，旧缓存清理范围仍仅限Home。卡片CSS、首页CSS及专题页面资源使用版本查询参数避免旧PWA缓存继续显示旧样式。
+
+## 淡蓝焊接光调整
+
+- 仅将动画光晕、白蓝中心和飞溅光线调整为淡蓝色，未改动背景照片中的橙色火花或原有动画节奏与定位。
+- 390×844手机视口检查：光效已显示，三层均运行welding-glow动画，无横向溢出，浏览器error/warn为空。
+- 证据：C:/Users/BOXSTER/.codex/visualizations/2026/09/29/01a0ed2c-53b4-7c71-be02-5d2129964e2b/welding-blue-light-mobile.jpg。
+- 本轮未commit、push或发布，101未修改。
+
+## 紧凑卡片调整
+
+最新追加：按用户要求再次缩小，手机实测140px（较上一版168px再减少约17%）；缩小图标及留白，不缩小中文字号。320、390px实测三卡片同一行且无横向溢出，浏览器error/warn为空，静态校验通过。最新证据：C:/Users/BOXSTER/.codex/visualizations/2026/09/29/01a0ed2c-53b4-7c71-be02-5d2129964e2b/cards-smaller-mobile.jpg。未发布，101未修改。以下为上一版记录。
+
+- 按用户要求进一步缩小：手机卡片实测高度从207.6px降至168px（约19%），桌面140px；三列宽度保留以保证中文可读和整卡点击空间。
+- 图标同步缩小，保留蓝/橙/绿配色、所有文案、三个专题链接及淡蓝焊接光；未改变背景图片。
+- 320、390、768px浏览器检查：三张卡片同一行，页面及卡片无横向溢出；error/warn为空。静态校验通过。
+- 证据：C:/Users/BOXSTER/.codex/visualizations/2026/09/29/01a0ed2c-53b4-7c71-be02-5d2129964e2b/cards-compact-mobile.jpg。
+- 本轮未commit、push或发布，101未修改。
 
 ## 可接受差异 / P3
 
-- 沿用项目860px最大宽度，而非扩展为参考图的超宽画布；手机使用纵向排列是阅读与点击空间的有意适配。
+- 沿用项目860px最大宽度，而非扩展为参考图的超宽画布；手机保持横向三列，卡片内部调整为图标在上。极窄屏英文底注较小，中文主标题与整卡点击仍可用。
 - 边框采用现有圆角语言，未逐像素复刻参考的切角装饰；不影响主要视觉层级与入口功能。
 
 ## 检查清单

@@ -2,7 +2,8 @@
   "use strict";
   const container = document.querySelector("#topic-content");
   const topicId = document.body.dataset.topic;
-  const dataUrl = new URL("../data/topics.json", location.href);
+  const dataUrl = new URL("../data/topics.json?v=18", location.href);
+  const entryContent = container.querySelector(".entry-content");
 
   function element(tag, text) {
     const node = document.createElement(tag);
@@ -16,11 +17,11 @@
   }).then(function (data) {
     const topic = data.topics[topicId];
     if (!topic || !Array.isArray(topic.items)) throw new Error("专题数据格式错误");
-    document.querySelector("h1").textContent = topic.title;
+    document.querySelector("h1").setAttribute("aria-label", topic.title);
     document.querySelector(".topic-subtitle").textContent = topic.subtitle;
-    document.title = topic.title + " · 操作工快速处置手册";
+    document.title = topic.title + " · 焊机操作工快速处置手册";
     if (!topic.items.length) { container.dataset.state = "empty"; return; }
-    container.replaceChildren();
+    entryContent.replaceChildren();
     topic.items.forEach(function (item) {
       const article = element("article");
       article.className = "topic-item";
@@ -38,12 +39,12 @@
         if (photo.caption) figure.append(element("figcaption", photo.caption));
         article.append(figure);
       });
-      container.append(article);
+      entryContent.append(article);
     });
     container.dataset.state = "ready";
   }).catch(function () {
     container.dataset.state = "error";
-    container.replaceChildren(element("p", "内容暂时无法加载，请返回首页或稍后刷新。"));
+    entryContent.replaceChildren(element("p", "内容暂时无法加载，请返回首页或稍后刷新。"));
   });
 
   if ("serviceWorker" in navigator) window.addEventListener("load", function () {

@@ -1,6 +1,8 @@
 # welding-guide-home
 
-操作工快速处置手册统一入口 PWA。
+焊机操作工快速处置手册统一入口 PWA。
+
+三个专题页面采用独立蓝/橙/绿主题，内容入口可展开收起；正式资料继续维护data/topics.json内对应items数组。装饰素材来源见assets/images/topics/PAGE-ASSETS.md，视觉核对见design-qa-topics.md。本地资源复核可运行node tests/verify-local-topics.mjs（需先启动本地预览）。
 
 ## 边界
 

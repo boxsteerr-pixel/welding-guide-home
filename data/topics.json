@@ -1,8 +1,8 @@
 {
   "contentVersion": "0.1.0",
   "topics": {
-    "laser-principles": { "title": "激光焊接原理", "subtitle": "原理概览", "items": [] },
-    "history": { "title": "历史回顾", "subtitle": "案例学习", "items": [] },
-    "safety": { "title": "安全事项", "subtitle": "作业提醒", "items": [] }
+    "laser-principles": { "title": "激光焊接原理", "subtitle": "原理概览 · 工艺基础", "items": [] },
+    "history": { "title": "历史回顾", "subtitle": "案例学习 · 经验总结", "items": [] },
+    "safety": { "title": "安全事项", "subtitle": "风险识别 · 防控措施", "items": [] }
   }
 }
