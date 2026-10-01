@@ -9,7 +9,7 @@ final result: passed
 - Implementation screenshot: C:/Users/BOXSTER/.codex/visualizations/2026/09/29/01a0ed2c-53b4-7c71-be02-5d2129964e2b/cards-comparison.jpg。
 - 同一对照截图中：上半部为参考卡片区域，下半部为实际Home卡片组件。参考按相同约824px内容宽度缩放并裁掉上下空白，不比较参考背景的大幅留白。
 - Comparison viewport: 860×800 CSS px，截图860×800 pixels，density 1。状态为默认、未悬停、三列卡片。
-- Mobile screenshot: C:/Users/BOXSTER/.codex/visualizations/2026/09/29/01a0ed2c-53b4-7c71-be02-5d2129964e2b/cards-mobile.jpg；390px CSS宽度、density 1，全页截图。
+- Mobile screenshot: C:/Users/BOXSTER/.codex/visualizations/2026/09/29/01a0ed2c-53b4-7c71-be02-5d2129964e2b/cards-mobile.jpg；配置390×844 CSS视口，实际全页截图375×1884 pixels；可见区域截图cards-mobile-preview.jpg为375×811 pixels。浏览器截图排除滚动条/界面边缘；手机截图仅作响应式核对，1:1参考比较使用860×800对照图，不把捕获边缘差异当成设计问题。
 - Focused evidence: 同一对照截图中卡片区域已足够清晰，可辨认编号、插画、标题、副标题及英文底注；另核对390px的完整Home截图。
 
 ## 比较与修正历史
