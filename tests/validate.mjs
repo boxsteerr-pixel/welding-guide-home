@@ -22,9 +22,11 @@ assert.equal((html.match(/<a class="device-card device-card--ready"/g) || []).le
 assert.equal(manifest.start_url, "./");
 assert.equal(manifest.scope, "./");
 assert.equal(manifest.icons.length, 2);
-assert.match(sw, /welding-guide-home-v9/);
+assert.match(sw, /welding-guide-home-v10/);
 assert.match(html, /class="welding-fx" aria-hidden="true"/);
-assert.match(html, /id="effects-toggle"/);
+assert.doesNotMatch(html, /effects-toggle|暂停光效|开启光效/);
+assert.doesNotMatch(await read("js/app.js"), /effectsToggle|effectsPaused/);
+for (const title of ["激光焊接原理介绍", "历史回顾", "安全事项"]) assert.ok(html.includes(`<strong>${title}</strong>`));
 assert.match(await read("css/style.css"), /prefers-reduced-motion: reduce/);
 for (const icon of ["welding-head", "feature-bolt", "feature-target", "feature-book"]) {
   assert.ok(html.includes(`./assets/icons/${icon}.svg`));

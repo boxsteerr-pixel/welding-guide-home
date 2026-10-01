@@ -38,16 +38,11 @@
   const hero = document.querySelector(".hero");
   const photo = document.querySelector(".hero__illustration");
   const effect = document.querySelector(".welding-fx");
-  const effectsToggle = document.querySelector("#effects-toggle");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  let effectsPaused = false;
   let heroVisible = true;
 
   function updateEffectPlayback() {
-    hero.classList.toggle("effects-paused", effectsPaused || document.hidden || !heroVisible || reducedMotion.matches);
-    effectsToggle.hidden = reducedMotion.matches || effect.hidden;
-    effectsToggle.setAttribute("aria-pressed", String(effectsPaused));
-    effectsToggle.textContent = effectsPaused ? "开启光效" : "暂停光效";
+    hero.classList.toggle("effects-paused", document.hidden || !heroVisible || reducedMotion.matches);
   }
 
   function alignWeldingEffect() {
@@ -73,10 +68,6 @@
   }).observe(hero);
   document.addEventListener("visibilitychange", updateEffectPlayback);
   reducedMotion.addEventListener("change", updateEffectPlayback);
-  effectsToggle.addEventListener("click", function () {
-    effectsPaused = !effectsPaused;
-    updateEffectPlayback();
-  });
   alignWeldingEffect();
 
   if ("serviceWorker" in navigator) {
