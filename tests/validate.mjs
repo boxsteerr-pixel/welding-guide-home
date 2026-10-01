@@ -22,13 +22,24 @@ assert.equal((html.match(/<a class="device-card device-card--ready"/g) || []).le
 assert.equal(manifest.start_url, "./");
 assert.equal(manifest.scope, "./");
 assert.equal(manifest.icons.length, 2);
-assert.match(sw, /welding-guide-home-v10/);
+assert.match(sw, /welding-guide-home-v11/);
 assert.match(html, /class="welding-fx" aria-hidden="true"/);
 assert.doesNotMatch(html, /effects-toggle|暂停光效|开启光效/);
 assert.doesNotMatch(await read("js/app.js"), /effectsToggle|effectsPaused/);
-for (const title of ["激光焊接原理介绍", "历史回顾", "安全事项"]) assert.ok(html.includes(`<strong>${title}</strong>`));
+for (const title of ["激光焊接原理", "历史回顾", "安全事项"]) assert.ok(html.includes(`<strong>${title}</strong>`));
+assert.ok(html.includes("<small>案例学习</small>"));
+const topics = JSON.parse(await read("data/topics.json"));
+for (const id of ["laser-principles", "history", "safety"]) {
+  assert.ok(html.includes(`href="./pages/${id}.html"`));
+  assert.ok(sw.includes(`./pages/${id}.html`));
+  const page = await read(`pages/${id}.html`);
+  assert.ok(page.includes(`data-topic="${id}"`));
+  assert.ok(page.includes('href="../index.html"'));
+  assert.ok(page.includes('src="../js/topics.js"'));
+  assert.ok(Array.isArray(topics.topics[id].items));
+}
 assert.match(await read("css/style.css"), /prefers-reduced-motion: reduce/);
-for (const icon of ["welding-head", "feature-bolt", "feature-target", "feature-book"]) {
+for (const icon of ["welding-head", "feature-principle", "feature-history", "feature-safety"]) {
   assert.ok(html.includes(`./assets/icons/${icon}.svg`));
   assert.ok(sw.includes(`./assets/icons/${icon}.svg`));
   assert.match(await read(`assets/icons/${icon}.svg`), /<svg/);
