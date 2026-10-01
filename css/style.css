@@ -181,6 +181,20 @@ h1 > span:first-child { color: white; }
 .device-card:first-child { background: radial-gradient(circle at 100% 0, #1475b6, transparent 75%), #072f59; border-color: #218ee0; }
 .device-card:first-child .device-card__action span { color: #20ccff; background: rgba(53,214,255,.16); }
 .site-note { background: rgba(255,255,255,.5); }
+.welding-fx { position: absolute; z-index: -1; width: 0; height: 0; pointer-events: none; }
+.welding-fx__glow, .welding-fx__core { position: absolute; border-radius: 50%; animation: welding-glow 3.6s ease-in-out infinite; }
+.welding-fx__glow { width: 86px; height: 86px; left: -43px; top: -43px; background: radial-gradient(circle, rgba(255,250,213,.65), rgba(255,184,67,.32) 24%, rgba(255,136,39,.12) 50%, transparent 72%); }
+.welding-fx__core { width: 22px; height: 22px; left: -11px; top: -11px; background: radial-gradient(circle, #fffef1, rgba(255,247,181,.65) 25%, transparent 70%); animation-delay: -.2s; }
+.welding-fx__spark { position: absolute; width: 13px; height: 2px; left: -6px; top: -1px; opacity: 0; border-radius: 50%; background: linear-gradient(90deg, transparent, #ffd48a, #fff9da); animation: welding-spark 3.8s ease-out infinite; animation-delay: var(--delay); }
+.effects-toggle { display: block; position: relative; min-height: 32px; margin: 8px 0 -12px auto; padding: 5px 9px; border: 1px solid rgba(138,201,255,.25); border-radius: 6px; background: rgba(2,25,52,.7); color: #b9d9ee; font-size: 10px; }
+.effects-paused .welding-fx * { animation-play-state: paused; }
+@keyframes welding-glow { 0%, 100% { opacity: .28; transform: scale(.84); } 35% { opacity: .6; transform: scale(1.08); } 65% { opacity: .38; transform: scale(.94); } }
+@keyframes welding-spark { 0%, 12% { opacity: 0; transform: translate(0, 0) rotate(var(--angle)) scaleX(.3); } 25% { opacity: .65; } 65%, 100% { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(var(--angle)) scaleX(.65); } }
+@media (prefers-reduced-motion: reduce) {
+  .welding-fx * { animation: none !important; }
+  .welding-fx__glow, .welding-fx__core { opacity: .2; }
+  .welding-fx__spark { display: none; }
+}
 .brand-mark { width: 36px; height: 42px; border: 0; border-radius: 0; background: none; }
 .brand-mark img { display: block; width: 100%; height: 100%; }
 .hero-feature { display: flex; align-items: center; justify-content: center; gap: 6px; min-width: 0; min-height: 74px; padding: 8px 5px; border: 1px solid rgba(138,201,255,.28); border-radius: 10px; background: rgba(2,32,70,.65); }

@@ -22,7 +22,10 @@ assert.equal((html.match(/<a class="device-card device-card--ready"/g) || []).le
 assert.equal(manifest.start_url, "./");
 assert.equal(manifest.scope, "./");
 assert.equal(manifest.icons.length, 2);
-assert.match(sw, /welding-guide-home-v8/);
+assert.match(sw, /welding-guide-home-v9/);
+assert.match(html, /class="welding-fx" aria-hidden="true"/);
+assert.match(html, /id="effects-toggle"/);
+assert.match(await read("css/style.css"), /prefers-reduced-motion: reduce/);
 for (const icon of ["welding-head", "feature-bolt", "feature-target", "feature-book"]) {
   assert.ok(html.includes(`./assets/icons/${icon}.svg`));
   assert.ok(sw.includes(`./assets/icons/${icon}.svg`));

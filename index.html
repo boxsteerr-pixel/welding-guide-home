@@ -19,6 +19,15 @@
         <span id="network-status" role="status">在线</span>
       </div>
       <img class="hero__illustration" src="./assets/welding-hero.png" alt="" aria-hidden="true" fetchpriority="high">
+      <div class="welding-fx" aria-hidden="true" hidden>
+        <i class="welding-fx__glow"></i><i class="welding-fx__core"></i>
+        <b class="welding-fx__spark" style="--dx: 52px; --dy: -18px; --angle: -19deg; --delay: -.4s"></b>
+        <b class="welding-fx__spark" style="--dx: 42px; --dy: 28px; --angle: 34deg; --delay: -1.5s"></b>
+        <b class="welding-fx__spark" style="--dx: -58px; --dy: -12px; --angle: 12deg; --delay: -.9s"></b>
+        <b class="welding-fx__spark" style="--dx: -40px; --dy: 30px; --angle: -37deg; --delay: -2.1s"></b>
+        <b class="welding-fx__spark" style="--dx: 20px; --dy: 44px; --angle: 66deg; --delay: -2.8s"></b>
+        <b class="welding-fx__spark" style="--dx: -26px; --dy: -32px; --angle: 51deg; --delay: -3.2s"></b>
+      </div>
       <p class="eyebrow">WELDING QUICK RESPONSE</p>
       <h1><span>操作工</span><span class="title-response">快速处置</span><span class="title-manual">手册</span></h1>
       <p class="maker">MADE BY FANGPING</p>
@@ -29,6 +38,7 @@
         <div class="hero-feature"><i class="feature-icon feature-icon--target" aria-hidden="true"><img src="./assets/icons/feature-target.svg" alt=""></i><div class="feature-copy"><strong>一键直达</strong><small>精准定位</small></div></div>
         <div class="hero-feature"><i class="feature-icon" aria-hidden="true"><img src="./assets/icons/feature-book.svg" alt=""></i><div class="feature-copy"><strong>独立手册</strong><small>离线可用</small></div></div>
       </div>
+      <button id="effects-toggle" class="effects-toggle" type="button" aria-pressed="false" hidden>暂停光效</button>
     </header>
 
     <main>
