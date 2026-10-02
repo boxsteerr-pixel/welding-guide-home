@@ -1,4 +1,4 @@
-const CACHE_NAME = "welding-guide-home-v27";
+const CACHE_NAME = "welding-guide-home-v28";
 const APP_ROOT = new URL("./", self.location.href);
 const CORE_ASSETS = [
   "./css/mobile-header.css?v=1",
@@ -10,7 +10,7 @@ const CORE_ASSETS = [
   "./js/updates.js?v=23",
   "./css/style.css",
   "./css/style.css?v=14-blue-light",
-  "./css/topic-cards.css?v=22-minimal",
+  "./css/topic-cards.css?v=28-clean",
   "./assets/images/topics/principle-3d.png",
   "./assets/images/topics/history-3d.png",
   "./assets/images/topics/safety-3d.png",
