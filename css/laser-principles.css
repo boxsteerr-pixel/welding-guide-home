@@ -1,0 +1,108 @@
+/* Only the principle branch; shared Hero, background, navigation and topic styles are untouched. */
+body[data-topic="laser-principles"] .principles-content { padding: 16px 12px 18px; }
+.principles-content * { box-sizing: border-box; }
+.principles-core, .principles-flow, .principles-diagram { padding: 16px; border: 1px solid #cce9fa; border-radius: 14px; background: #f1f9ff; }
+.principles-content h2 { margin: 0 0 10px; font-size: 18px; line-height: 1.4; color: #083151; }
+.principles-content p { font-size: 14px; line-height: 1.75; color: #405a70; overflow-wrap: anywhere; }
+.principles-core p { margin: 0; }
+.principles-core strong { color: #006aa6; font-weight: 800; }
+.principles-card { margin-top: 12px; border: 1px solid #d1e7f5; border-radius: 13px; background: #fff; overflow: hidden; }
+body[data-topic="laser-principles"] .principles-card > summary { display: block; min-height: 44px; padding: 14px; list-style: none; }
+.principles-card summary::-webkit-details-marker { display: none; }
+.principles-card-heading { display: grid; grid-template-columns: 27px 22px minmax(0,1fr) 25px; align-items: center; gap: 7px; }
+body[data-topic="laser-principles"] .principles-card-heading strong { font-size: 16px; line-height: 1.4; }
+.principles-number { font-size: 15px; font-weight: 800; color: #0083c2; font-variant-numeric: tabular-nums; }
+.principles-icon { width: 22px; height: 22px; object-fit: contain; filter: invert(38%) sepia(100%) saturate(1500%) hue-rotate(164deg); }
+.principles-expand { width: 25px; height: 25px; padding: 7px; border-radius: 50%; background: #e5f5ff; transform: rotate(90deg); }
+.principles-card[open] .principles-expand { transform: rotate(-90deg); }
+.principles-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+.principles-tag { padding: 2px 6px; border-radius: 5px; background: #edf7fd; font-size: 11px; color: #32647c; }
+.principles-card summary .principles-teaser { margin: 8px 0 0; font-size: 13px; }
+.principles-detail { padding: 0 14px 14px; border-top: 1px solid #e3eff7; }
+.principles-detail p { margin: 12px 0 0; }
+.principles-flow, .principles-diagram { margin-top: 18px; background: #fff; }
+.principles-flow .principles-flow-help { font-size: 12px; margin: 0 0 10px; }
+.principles-process { display: flex; gap: 22px; margin: 0; padding: 4px 2px 12px; list-style: none; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; }
+.principles-process li { flex: 0 0 96px; scroll-snap-align: start; position: relative; padding: 12px 8px; text-align: center; border: 1px solid #cae5f6; border-radius: 10px; background: #eff8fe; }
+.principles-process li:not(:last-child)::after { content: "→"; position: absolute; top: 27px; right: -19px; color: #0789c7; }
+.principles-process img { display: block; width: 22px; height: 22px; margin: 0 auto 8px; }
+.principles-process span { display: block; color: #16435e; font-size: 12px; font-weight: 700; }
+.principles-diagram figure { margin: 0; }
+.principles-diagram button { display: block; width: 100%; padding: 0; border: 1px solid #c3e2f6; border-radius: 10px; overflow: hidden; background: #092c49; cursor: zoom-in; }
+.principles-diagram img { display: block; width: 100%; height: auto; }
+.principles-diagram figcaption, .principles-content .principles-notice { margin: 10px 0 0; font-size: 12px; color: #55738a; }
+.principles-lightbox { width: min(96vw, 1200px); max-width: 96vw; max-height: 90dvh; margin: auto; padding: 16px; border: 1px solid #a0d9f6; border-radius: 16px; background: #f1f9ff; color: #123a53; }
+.principles-lightbox::backdrop { background: rgba(0,16,33,.82); }
+.principles-lightbox-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.principles-lightbox h2 { margin: 0; font-size: 17px; }
+.diagram-close { flex-shrink: 0; min-width: 52px; min-height: 44px; border: 1px solid #acd4e8; border-radius: 8px; background: #fff; color: #123a53; cursor: pointer; }
+.diagram-help { margin: 8px 0; font-size: 12px; }
+.diagram-help a { color: #006da2; }
+.principles-image-scroll { overflow: auto; max-height: 68dvh; }
+.principles-image-scroll img { display: block; width: 100%; max-width: none; height: auto; }
+.principles-gallery-card { margin: 12px 0 0; border: 1px solid #cce5f6; border-radius: 12px; background: #f5fbff; overflow: hidden; }
+body[data-topic="laser-principles"] .principles-gallery-card > summary { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 52px; padding: 12px; list-style: none; }
+.principles-gallery-card summary::-webkit-details-marker { display: none; }
+body[data-topic="laser-principles"] .principles-gallery-card > summary strong { font-size: 15px; }
+.principles-gallery-card[open] .principles-expand { transform: rotate(-90deg); }
+.principles-gallery-card .principles-expand { flex-shrink: 0; width: 25px; height: 25px; }
+.principles-gallery-card figure { margin: 0; padding: 0 10px 12px; }
+.principles-gallery-card figure img { width: 100%; height: auto; object-fit: contain; }
+.principles-scene { position: relative; width: 100%; overflow: hidden; background: #061d30; }
+.principles-scene img { position: absolute; left: 0; width: 100%; height: auto; max-width: none; }
+.principles-scene-label { position: absolute; display: flex; align-items: center; justify-content: center; padding: 3px; background: #061d30; color: #bdeaff; font: 600 12px/1.4 system-ui, sans-serif; text-align: center; overflow-wrap: anywhere; }
+.principles-gallery-card figure .principles-retyped { margin: 10px 0; font-size: 14px; }
+.principles-image-scroll .principles-scene-label { font-size: clamp(12px, 2vw, 20px); }
+.diagram-zoom-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+.diagram-zoom-tools button, .diagram-original { min-height: 44px; padding: 8px 12px; border: 1px solid #b5d8ef; border-radius: 8px; background: #fff; color: #145574; cursor: pointer; font-size: 14px; }
+.diagram-original { text-decoration: none; }
+.principles-diagram button:focus-visible, .diagram-close:focus-visible, .principles-process:focus-visible { outline: 3px solid #007cba; outline-offset: 2px; }
+
+/* Scoped overview design. Shared Hero and other topics remain untouched. */
+body[data-topic="laser-principles"] .topic-entry { border: 1px solid #baddef; border-radius: 20px; box-shadow: 0 12px 32px #123f6518; }
+body[data-topic="laser-principles"] .topic-entry > summary { background: linear-gradient(120deg, #082d4e, #0b537b); border-bottom: 1px solid #68cfff60; }
+body[data-topic="laser-principles"] .topic-entry > summary strong { color: #fff; }
+body[data-topic="laser-principles"] .topic-entry > summary small { color: #c4e9fa; }
+body[data-topic="laser-principles"] .topic-entry > summary .entry-arrow { background: #e3f8ff; }
+body[data-topic="laser-principles"] .principles-content { padding-top: 18px; background: linear-gradient(180deg, #eaf5fc, #f6faff); }
+.principles-core { position: relative; padding: 22px 18px; overflow: hidden; border-color: #3aa4d0; border-radius: 18px; background: linear-gradient(135deg, #062945, #10537b); box-shadow: 0 8px 20px #0c497c1c; }
+.principles-core::before { content: "CO₂ LASER / CORE PRINCIPLE"; display: block; margin-bottom: 12px; color: #80dfff; font-size: 10px; font-weight: 700; letter-spacing: .12em; }
+.principles-core::after { content: ""; position: absolute; right: -35px; top: -42px; width: 160px; height: 160px; border: 1px solid #93ddff24; border-radius: 50%; box-shadow: 0 0 0 24px #9de5ff09, 0 0 0 48px #9de5ff06; pointer-events: none; }
+.principles-core h2 { position: relative; z-index: 1; color: #fff; font-size: 23px; letter-spacing: .02em; }
+.principles-core p { position: relative; z-index: 1; color: #d7eaf7; line-height: 1.9; }
+.principles-core strong { color: #85e8ff; border-bottom: 1px solid #70d9ff80; padding-bottom: 2px; }
+.principles-card { border-radius: 16px; border-color: #d4e5ef; box-shadow: 0 3px 10px #124a7308; }
+body[data-topic="laser-principles"] .principles-card > summary { padding: 16px 14px; }
+.principles-card-heading { grid-template-columns: 34px minmax(0,1fr) 28px; gap: 10px; }
+.principles-card-heading > .principles-icon { display: none; }
+.principles-number { display: grid; place-items: center; width: 34px; height: 36px; border-radius: 10px; background: linear-gradient(145deg, #0a83be, #075381); color: #fff; box-shadow: 0 3px 8px #0877ac26; }
+.principles-expand { background: #e9f5fc; transition: transform .18s ease; }
+.principles-tags { margin-top: 12px; gap: 6px; }
+.principles-tag { padding: 3px 8px; border: 1px solid #d4eaf6; border-radius: 6px; background: #f2f9fd; color: #256080; font-size: 11px; }
+.principles-card summary .principles-teaser { margin-top: 10px; color: #516a7c; }
+.principles-card[open] { border-color: #55b6e0; box-shadow: 0 5px 16px #0575ac12; }
+.principles-card[open] > summary { background: linear-gradient(130deg, #f1faff, #fff); }
+.principles-detail { border-color: #dceefa; background: #fbfdff; padding: 0 16px 16px; }
+.principles-flow, .principles-diagram { padding: 18px 14px; border-radius: 18px; border-color: #c9e2f1; box-shadow: 0 4px 15px #124a7309; }
+.principles-flow h2, .principles-diagram h2 { padding-left: 10px; border-left: 3px solid #0c9dd5; }
+.principles-process { counter-reset: principle-step; gap: 20px; padding-top: 6px; scrollbar-color: #81bdda #edf6fc; scrollbar-width: thin; }
+.principles-process li { counter-increment: principle-step; flex-basis: 96px; padding: 12px 7px; border-radius: 13px; background: linear-gradient(155deg, #f1faff, #e3f1fc); }
+.principles-process li::before { content: counter(principle-step, decimal-leading-zero); display: grid; place-items: center; width: 28px; height: 28px; margin: 0 auto 8px; border-radius: 9px; background: #0b6999; color: #fff; font-size: 11px; font-weight: 700; }
+.principles-process li img { display: none; }
+.principles-process li:not(:last-child)::after { top: 35px; right: -18px; }
+.principles-gallery-card { border-radius: 14px; border-color: #d1e6f2; background: #fff; }
+body[data-topic="laser-principles"] .principles-gallery-card > summary { min-height: 60px; background: linear-gradient(110deg, #edf7fd, #f8fcff); }
+.principles-gallery-card[open] { border-color: #77bee1; }
+.principles-gallery-card figure { padding: 0 12px 14px; }
+.principles-gallery-card figure .principles-retyped { line-height: 1.85; color: #405d72; }
+.principles-gallery-card figcaption { padding: 10px; border-radius: 9px; background: #edf7fe; line-height: 1.75; }
+.principles-content .principles-notice { padding: 12px; border: 1px dashed #b7d6e9; border-radius: 11px; background: #eef7fc; line-height: 1.8; }
+body[data-topic="laser-principles"] .defects-entry { margin-top: 18px; }
+body[data-topic="laser-principles"] .defects-entry > summary .entry-icon { filter: none; color: #7ce3ff; }
+.defects-content { padding: 16px 12px; background: #edf7fd; }
+.defects-placeholder { padding: 18px; border: 1px dashed #b5d6e9; border-radius: 14px; background: #fff; }
+.defects-status { display: inline-block; padding: 4px 9px; border-radius: 6px; background: #edf7fe; color: #246a8d; font-size: 12px; }
+.defects-placeholder h2 { margin: 12px 0 8px; font-size: 18px; color: #103650; }
+.defects-placeholder p { margin: 8px 0 0; font-size: 14px; line-height: 1.8; color: #456178; }
+.defects-placeholder .defects-note { padding-top: 12px; border-top: 1px solid #e2eef6; font-size: 12px; }
+@media (prefers-reduced-motion: reduce) { .principles-expand { transition: none; } }

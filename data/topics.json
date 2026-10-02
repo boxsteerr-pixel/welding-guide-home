@@ -1,8 +1,20 @@
 {
-  "contentVersion": "0.1.0",
+  "contentVersion": "0.2.0",
   "topics": {
     "laser-principles": { "title": "激光焊接原理", "subtitle": "原理概览 · 工艺基础", "items": [] },
     "history": { "title": "历史回顾", "subtitle": "案例学习 · 经验总结", "items": [] },
-    "safety": { "title": "安全事项", "subtitle": "风险识别 · 防控措施", "items": [] }
+    "safety": {
+      "title": "安全事项",
+      "subtitle": "风险识别 · 防控措施",
+      "notice": "本页为焊机通用安全要求，具体作业同时执行对应设备制造商安全规程及现场安全管理规定。",
+      "items": [
+        { "title": "进入焊机安全围栏", "icon": "lock-fill", "priority": true, "summary": "进入焊机安全围栏内作业前，必须执行锁定挂牌（LOTO），并插入作业区域对应的安全销，确认设备处于安全状态后方可进入。", "emphasis": ["锁定挂牌（LOTO）", "插入作业区域对应的安全销"] },
+        { "title": "2. 机械伤害", "icon": "gear-fill", "summary": "设备动作前确认危险区域无人，严禁进入运行设备的危险区域。" },
+        { "title": "3. 安全装置", "icon": "shield-fill-check", "summary": "严禁拆除、短接、绕过安全销、安全开关及安全联锁等安全装置。" },
+        { "title": "4. 能源隔离", "icon": "lightning-fill", "summary": "检修前必须可靠隔离电气、液压、气动等危险能源，并确认系统可能存在的残余能量已释放。" },
+        { "title": "5. 激光危险", "icon": "sun-fill", "summary": "严禁直视激光或擅自打开光路防护；涉及激光器、光路或焊接头的维护调整必须执行相应的激光安全措施。" },
+        { "title": "6. 异常处置", "icon": "exclamation-circle-fill", "summary": "发现设备异常动作、泄漏、异响或安全装置异常等可能影响安全的情况，应立即停止设备并报告处理。" }
+      ]
+    }
   }
 }

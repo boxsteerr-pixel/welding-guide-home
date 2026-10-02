@@ -1,6 +1,25 @@
-const CACHE_NAME = "welding-guide-home-v29";
+const CACHE_NAME = "welding-guide-home-v32";
 const APP_ROOT = new URL("./", self.location.href);
 const CORE_ASSETS = [
+  "./css/laser-principles.css?v=9",
+  "./js/laser-principles.js?v=9",
+  "./data/laser-principles.json?v=9",
+  "./assets/images/topics/co2-source-08-generation.png",
+  "./assets/images/topics/co2-source-09-focusing.png",
+  "./assets/images/topics/co2-source-07-protection.png",
+  "./assets/images/topics/co2-source-06-crosssection.png",
+  "./css/safety.css?v=31",
+  "./js/topics.js?v=31",
+  "./data/topics.json?v=31",
+  "./assets/icons/safety/eyeglasses.svg",
+  "./assets/icons/safety/lock-fill.svg",
+  "./assets/icons/safety/gear-fill.svg",
+  "./assets/icons/safety/shield-fill-check.svg",
+  "./assets/icons/safety/lightning-fill.svg",
+  "./assets/icons/safety/sun-fill.svg",
+  "./assets/icons/safety/exclamation-circle-fill.svg",
+  "./assets/icons/safety/file-earmark-text.svg",
+  "./assets/icons/safety/chevron-down.svg",
   "./css/mobile-header.css?v=1",
   "./",
   "./index.html",

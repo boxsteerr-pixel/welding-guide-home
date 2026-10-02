@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="650" viewBox="0 0 1100 650" role="img" aria-labelledby="title desc">
+  <title id="title">CO₂激光焊接通用原理示意图</title>
+  <desc id="desc">激光器输出经外光路与反射镜送至焊接头，光束聚焦于钢板接缝。金属熔化和局部汽化形成小孔，能量深入材料形成熔池，熔融金属回填并凝固成焊缝。此图非具体设备结构图，不按比例绘制。</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#39cafa"/></marker></defs>
+  <rect width="1100" height="650" rx="20" fill="#08263f"/>
+  <g font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" fill="#e5f6ff">
+    <text x="40" y="46" font-size="27" font-weight="700">CO₂激光焊接 · 通用物理过程</text>
+    <text x="40" y="74" font-size="15" fill="#9ec8df">原理示意，非设备结构图；不按比例绘制</text>
+    <g fill="#123e5b" stroke="#59bce9" stroke-width="2">
+      <rect x="40" y="108" width="180" height="75" rx="12"/><rect x="285" y="108" width="180" height="75" rx="12"/>
+      <rect x="530" y="108" width="180" height="75" rx="12"/><rect x="775" y="108" width="200" height="75" rx="12"/>
+    </g>
+    <g text-anchor="middle" font-size="23" font-weight="700"><text x="130" y="153">CO₂激光器</text><text x="375" y="153">外光路</text><text x="620" y="153">反射镜</text><text x="875" y="153">焊接头</text></g>
+    <g stroke="#39cafa" stroke-width="3" marker-end="url(#arrow)"><path d="M225 145H278"/><path d="M470 145H523"/><path d="M715 145H768"/></g>
+    <text x="40" y="229" font-size="18" fill="#acd9f0">典型波长：约10.6 μm</text>
+    <text x="40" y="258" font-size="16" fill="#acd9f0">外光路通过反射改变光束方向；具体聚焦及防护结构因设备而异。</text>
+    <path d="M855 184 875 341 895 184" fill="#57d8ff" fill-opacity=".25" stroke="#65deff" stroke-width="2"/>
+    <path d="M875 188V333" stroke="#d9f7ff" stroke-width="3"/>
+    <text x="944" y="244" font-size="20">聚焦光束</text><path d="M940 251 892 269" stroke="#87c9e8"/>
+    <text x="44" y="309" font-size="18" fill="#b7e2f4">沿接缝的局部纵截面示意</text>
+    <rect x="130" y="342" width="880" height="95" rx="5" fill="#376581" stroke="#80bddb" stroke-width="2"/>
+    <path d="M146 347H730" stroke="#d9edf6" stroke-width="7"/>
+    <path d="M730 347C753 334 839 323 897 345C888 384 842 407 804 398C771 392 746 374 730 347Z" fill="#ffb955" stroke="#ffdca5" stroke-width="2"/>
+    <path d="M867 342C873 355 867 380 875 389C886 380 878 357 884 342" fill="#09283e" stroke="#fff0c9" stroke-width="2"/>
+    <circle cx="875" cy="342" r="6" fill="#e8fbff"/>
+    <text x="42" y="389" font-size="19">钢板</text>
+    <g stroke="#9bcee6" fill="none" stroke-width="1.5"><path d="M470 291 470 343"/><path d="M630 477 630 349"/><path d="M805 475 817 390"/><path d="M973 476 880 383"/></g>
+    <text x="404" y="284" font-size="20">钢板接缝</text>
+    <text x="589" y="505" font-size="20">焊缝</text><text x="749" y="505" font-size="20">熔池</text><text x="925" y="505" font-size="20">小孔 Keyhole</text>
+    <path d="M600 317H775" stroke="#39cafa" stroke-width="2" marker-end="url(#arrow)"/><text x="600" y="304" font-size="15" fill="#a7d7f0">相对运动方向（示意）</text>
+    <rect x="40" y="547" width="1020" height="69" rx="12" fill="#123e5b"/>
+    <text x="60" y="574" font-size="18">材料熔化 / 汽化 → 小孔形成 → 深熔焊接 → 熔池回填 / 凝固 → 焊缝形成</text>
+    <text x="60" y="600" font-size="15" fill="#a8cfe4">配置填丝系统时，焊丝可送入熔池补充焊缝金属；保护措施与光学清洁有助于焊接稳定。</text>
+  </g>
+</svg>

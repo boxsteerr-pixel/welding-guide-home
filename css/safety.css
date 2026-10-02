@@ -1,0 +1,56 @@
+/* Scoped to the Home safety topic; other topics and device manuals are untouched. */
+body[data-topic="safety"] { color: #102c45; }
+body[data-topic="safety"] .topic-shell { background-size: 100% 100%, auto 300%; }
+body[data-topic="safety"] .topic-header {
+  min-height: 0; padding: 14px 32px 22px;
+  background-size: 100% 100%, 100% auto;
+  border-radius: 0;
+}
+body[data-topic="safety"] .home-return { top: calc(6px + env(safe-area-inset-top)); left: 6px; }
+body[data-topic="safety"] .topic-hero-art { width: 78px; height: 78px; margin: 0 0 2px 8px; filter: sepia(1) saturate(5) hue-rotate(75deg); }
+body[data-topic="safety"] h1 { font-size: clamp(32px, 9vw, 44px); }
+body[data-topic="safety"] .topic-english { margin-top: 4px; font-size: 14px; letter-spacing: .08em; }
+body[data-topic="safety"] .topic-subtitle { margin-top: 8px; font-size: 16px; }
+body[data-topic="safety"] .topic-header::after { margin-top: 10px; width: 46px; height: 3px; }
+body[data-topic="safety"] main { position: relative; margin-top: -12px; padding: 0 16px; }
+body[data-topic="safety"] .topic-entry { border-radius: 18px; background: rgba(255,255,255,.95); }
+body[data-topic="safety"] .topic-entry > summary { grid-template-columns: 50px minmax(0,1fr) 28px; gap: 12px; min-height: 88px; padding: 12px; }
+body[data-topic="safety"] .entry-icon { width: 50px; height: 50px; padding: 7px; }
+body[data-topic="safety"] .topic-entry summary strong { font-size: clamp(17px,4.8vw,24px); }
+body[data-topic="safety"] .topic-entry summary small { margin-top: 3px; font-size: 13px; }
+body[data-topic="safety"] .entry-arrow { width: 28px; height: 28px; padding: 7px; background: #d6f3df; }
+body[data-topic="safety"] .topic-entry[open] > summary .entry-arrow { transform: rotate(180deg); }
+body[data-topic="safety"] .entry-content { border: 0; padding: 0 8px 8px; }
+.safety-section-heading { display: grid; grid-template-columns: 50px minmax(0,1fr); align-items: center; gap: 12px; min-height: 88px; padding: 12px; }
+.safety-section-heading h2 { margin: 0; color: #102c45; font-size: clamp(17px,4.8vw,24px); line-height: 1.4; }
+.safety-section-heading p { margin: 3px 0 0; color: #566972; font-size: 13px; }
+.safety-risk { --risk-color: #0b95e9; --risk-paper: #d8efff; border-bottom: 1px solid #dfe9e7; border-radius: 12px; background: rgba(245,250,250,.8); }
+.safety-risk > summary { display: grid; grid-template-columns: 48px minmax(0,1fr) 24px; gap: 12px; padding: 10px 12px; min-height: 68px; align-items: center; list-style: none; cursor: pointer; }
+.safety-risk summary::-webkit-details-marker { display: none; }
+.safety-risk-icon { width: 48px; height: 48px; padding: 12px; background: var(--risk-paper); border-radius: 50%; filter: none; }
+.safety-risk--0 { --risk-color: #e5101b; --risk-paper: #ffcaca; }
+.safety-risk--2 { --risk-color: #ff7b00; --risk-paper: #fff0dc; }
+.safety-risk--3 { --risk-color: #8018dc; --risk-paper: #eee0ff; }
+.safety-risk--4 { --risk-color: #183efa; }
+.safety-risk--5 { --risk-color: #049a3b; --risk-paper: #d7f4e2; }
+.safety-risk--priority { border-left: 4px solid #e5101b; background: #fff0f1; }
+.safety-risk-copy { min-width: 0; }
+body[data-topic="safety"] .safety-risk-title { font-size: clamp(16px,4.3vw,22px); line-height: 1.4; color: #102c45; }
+body[data-topic="safety"] .safety-risk--priority .safety-risk-title { color: #d61018; }
+.safety-risk-title > span { display: inline-block; margin-left: 6px; padding: 2px 5px; border-radius: 5px; background: #eb1825; color: white; font-size: 10px; vertical-align: middle; white-space: nowrap; }
+.safety-risk-detail p { margin: 3px 0 0; color: #3f5971; font-size: clamp(13px,3.6vw,17px); line-height: 1.5; overflow-wrap: anywhere; }
+.safety-risk-detail p strong { display: inline !important; font-size: inherit !important; font-weight: 750; color: #d61018 !important; }
+.safety-chevron { width: 24px; height: 24px; padding: 6px; background: #e0f4eb; border-radius: 50%; }
+.safety-risk--priority .safety-chevron { background: #f2dfe1; }
+.safety-risk[open] .safety-chevron { transform: rotate(180deg); }
+.safety-risk-detail { padding: 0 12px 12px 72px; }
+.safety-general-notice { display: flex; gap: 12px; align-items: center; padding: 9px 12px; background: #e6f3ff; border-radius: 12px; color: #5a7a98; }
+.safety-general-notice img { width: 25px; height: 30px; flex: 0 0 25px; }
+.safety-general-notice p { margin: 0; font-size: 12px; line-height: 1.5; }
+@media (max-width: 359px) {
+  body[data-topic="safety"] .topic-header { padding-left: 26px; padding-right: 20px; }
+  body[data-topic="safety"] main { padding-left: 10px; padding-right: 10px; }
+  .safety-risk > summary { grid-template-columns: 38px minmax(0,1fr) 22px; gap: 8px; padding: 10px 8px; }
+  .safety-risk-icon { width: 38px; height: 38px; padding: 9px; }
+  .safety-risk-detail { padding-left: 54px; }
+}

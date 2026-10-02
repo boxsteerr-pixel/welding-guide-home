@@ -9,7 +9,8 @@
   <link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../css/topics.css?v=19">
   <link rel="stylesheet" href="../css/home-link.css?v=26">
-  <script src="../js/topics.js?v=18" defer></script>
+  <link rel="stylesheet" href="../css/laser-principles.css?v=9">
+  <script src="../js/laser-principles.js?v=9" defer></script>
 </head>
 <body data-topic="laser-principles">
   <div class="topic-shell">
@@ -22,10 +23,20 @@
     </header>
     <main>
       <section id="topic-content" aria-label="激光焊接原理内容">
-        <details class="topic-entry"><summary><img class="entry-icon" src="../assets/icons/topic-principle-entry.svg" alt=""><span><strong>1. 原理概述</strong><small>激光焊接的基本原理与特点</small></span><img class="entry-arrow" src="../assets/icons/chevron-right.svg" alt=""></summary><div class="entry-content"><p class="empty-state">内容待补充：相关资料将在审核后录入。</p></div></details>
+        <details class="topic-entry"><summary><img class="entry-icon" src="../assets/icons/topic-principle-entry.svg" alt=""><span><strong>1. 原理概述</strong><small>激光焊接的基本原理与特点</small></span><img class="entry-arrow" src="../assets/icons/chevron-right.svg" alt=""></summary><div class="entry-content principles-content"><p class="empty-state" role="status">正在加载CO₂激光焊接原理…</p></div></details>
+        <details class="topic-entry defects-entry">
+          <summary><svg class="entry-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 21h20L12 3Z"/><path d="M12 9v5m0 3h.01"/></svg><span><strong>2. 常见焊接缺陷</strong><small>焊缝缺陷识别与原因分析</small></span><img class="entry-arrow" src="../assets/icons/chevron-right.svg" alt=""></summary>
+          <div class="entry-content defects-content"><div class="defects-placeholder"><span class="defects-status">内容待补充</span><h2>常见焊接缺陷</h2><p>后续在此补充缺陷图片、典型现象及原因分析。</p><p class="defects-note">实际设备的判断标准与处置措施，应结合现场审核及对应设备资料录入。</p></div></div>
+        </details>
       </section>
     </main>
     <footer>MADE BY FANGPING</footer>
   </div>
+  <dialog class="principles-lightbox" aria-labelledby="diagram-dialog-title">
+    <div class="principles-lightbox-toolbar"><h2 id="diagram-dialog-title">CO₂激光焊接原理示意图</h2><button type="button" class="diagram-close" aria-label="关闭原理示意图">关闭</button></div>
+    <div class="diagram-zoom-tools"><button type="button" class="diagram-zoom-out" aria-label="缩小示意图">缩小</button><button type="button" class="diagram-zoom-in" aria-label="放大示意图">放大</button><a class="diagram-original" href="../assets/images/topics/co2-source-01-generation.png" target="_blank" rel="noopener">原始素材</a></div>
+    <p class="diagram-help">放大后可移动查看细节；也可打开原始素材使用浏览器缩放。图片具体配置请结合图下注释理解。</p>
+    <div class="principles-image-scroll"><img alt="当前选中的CO₂激光焊接原理插图"></div>
+  </dialog>
 </body>
 </html>
