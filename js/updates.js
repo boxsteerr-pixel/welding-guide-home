@@ -1,10 +1,11 @@
 (function () {
   "use strict";
   const updates = window.WeldingUpdates;
-  const ids = ["108", "102", "122", "202", "401", "411", "502"];
+  const ids = ["101", "108", "102", "122", "202", "401", "411", "502"];
   let checking = false;
   const cards = ids.map(function (id) {
-    const card = document.querySelector('a[href$="/welding-guide-' + id + '/"]');
+    const project = id === "101" ? "welding-guide" : "welding-guide-" + id;
+    const card = document.querySelector('a[href$="/' + project + '/"]');
     if (!card) return null;
     const badge = document.createElement("span");
     badge.className = "device-update-dot";
@@ -28,9 +29,18 @@
     const timeout = setTimeout(function () { controller.abort(); }, 5000);
     try {
       // Sibling project URL works both on project Pages and local subdirectory previews.
-      const url = new URL("../welding-guide-" + entry.id + "/data/manual.json", location.href);
+      const project = entry.id === "101" ? "welding-guide" : "welding-guide-" + entry.id;
+      const file = entry.id === "101" ? "service-worker.js" : "data/manual.json";
+      const url = new URL("../" + project + "/" + file, location.href);
       const response = await fetch(url, { cache: "no-store", signal: controller.signal });
       if (!response.ok) return;
+      // 101 already publishes APP_VERSION; read that small file, never fetch its photos/content.
+      if (entry.id === "101") {
+        const source = await response.text();
+        const match = source.match(/^\s*const\s+APP_VERSION\s*=\s*["'](\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?)["']\s*;/m);
+        if (match) updates.rememberLatest({ machineId: "101", manualVersion: match[1] });
+        return;
+      }
       const manual = await response.json();
       if (!manual.machine || manual.machine.machineId !== entry.id || !updates.version(manual.machine)) return;
       updates.rememberLatest(manual.machine);

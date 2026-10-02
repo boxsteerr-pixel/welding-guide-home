@@ -2,7 +2,7 @@
 (function () {
   "use strict";
   const prefix = "welding-guide-updates:";
-  const ids = ["108", "102", "122", "202", "401", "411", "502"];
+  const ids = ["101", "108", "102", "122", "202", "401", "411", "502"];
   function version(machine) {
     return machine && ids.includes(machine.machineId) &&
       typeof machine.manualVersion === "string" && machine.manualVersion.trim()
