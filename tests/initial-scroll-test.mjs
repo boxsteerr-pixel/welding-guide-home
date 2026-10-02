@@ -26,6 +26,13 @@ for (const id of ["108", "102", "122", "202", "401", "411", "502"]) {
     assert.equal(scrolls[0].top, 0);
     events.pageshow({ persisted: false });
     assert.equal(scrolls.at(-1).behavior, "instant");
+    location.hash = "#home";
+    events.hashchange();
+    assert.equal(location.hash, "#section=home");
+    assert.equal(scrolls.at(-1).behavior, "instant");
+    location.hash = "#main-content";
+    events.hashchange();
+    assert.equal(location.hash, "#main-content");
     vm.runInContext('showSection("safety")', ctx);
     assert.equal(routes.at(-1), "#section=safety");
     assert.equal(scrolls.at(-1).behavior, "smooth");
