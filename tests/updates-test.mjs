@@ -87,7 +87,7 @@ for (const id of ids) {
   const app = await readFile(path.join(directory, "js/app.js"), "utf8");
   assert.match(app, /renderManual\(manual\);\s*\/\/[^\n]*\n\s*if \(window.WeldingUpdates\) window.WeldingUpdates.markViewed\(manual.machine\)/);
   const html = await readFile(path.join(directory, "index.html"), "utf8");
-  assert.ok(html.indexOf("update-state.js?v=2") < html.indexOf("app.js?v=7"));
+  assert.ok(html.indexOf("update-state.js?v=2") < html.indexOf("app.js?v=8"));
   const sw = await readFile(path.join(directory, "service-worker.js"), "utf8");
   assert.ok(sw.includes('"./js/update-state.js?v=2"'));
   assert.ok(sw.includes('const CACHE_PREFIX = "welding-guide-' + id + '-"'));
@@ -99,7 +99,7 @@ for (const id of ids) {
     clients: { claim: async () => {} },
     addEventListener(name, fn) { events[name] = fn; }
   }, caches: {
-    keys: async () => ["welding-guide-home-v26", "welding-guide-" + id + "-v1", "welding-guide-" + id + "-v7", "welding-guide-production-cache"],
+    keys: async () => ["welding-guide-home-v26", "welding-guide-" + id + "-v1", "welding-guide-" + id + "-v8", "welding-guide-production-cache"],
     delete: async name => { deleted.push(name); }
   } });
   vm.runInContext(sw, worker);
