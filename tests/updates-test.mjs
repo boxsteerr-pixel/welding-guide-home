@@ -99,7 +99,7 @@ for (const id of ids) {
     clients: { claim: async () => {} },
     addEventListener(name, fn) { events[name] = fn; }
   }, caches: {
-    keys: async () => ["welding-guide-home-v26", "welding-guide-" + id + "-v1", "welding-guide-" + id + "-v8", "welding-guide-production-cache"],
+    keys: async () => ["welding-guide-home-v27", "welding-guide-" + id + "-v1", "welding-guide-" + id + "-v9", "welding-guide-production-cache"],
     delete: async name => { deleted.push(name); }
   } });
   vm.runInContext(sw, worker);

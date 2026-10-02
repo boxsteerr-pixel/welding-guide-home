@@ -1,0 +1,9 @@
+/* Compact browser-mode top inset, while keeping the installed PWA notch-safe. */
+@media (max-width:619px) {
+  .hero { padding-top:calc(8px + min(env(safe-area-inset-top, 0px), 12px)); }
+  .hero__status { padding-top:0; padding-bottom:8px; }
+  .eyebrow { margin-top:20px; }
+}
+@media (max-width:619px) and (display-mode:standalone) {
+  .hero { padding-top:calc(8px + env(safe-area-inset-top, 0px)); }
+}
