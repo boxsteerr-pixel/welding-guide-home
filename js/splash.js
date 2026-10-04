@@ -2,6 +2,7 @@
   'use strict';
   const splash = document.getElementById('welcome-splash');
   if (!splash) return;
+  if (document.documentElement.classList.contains('skip-welcome')) { splash.remove(); return; }
   const number = document.getElementById('welcome-splash-number');
   const timers = new Set();
   let removed = false;

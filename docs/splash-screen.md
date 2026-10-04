@@ -12,15 +12,18 @@
 - 旧背景和字体文件保留，但启动页不再引用或预缓存它们。
 - 数字3→2→1，3秒后开始整体淡出，约3.5秒移除覆盖层。4.5秒JavaScript与4.8秒CSS保护避免用户被锁住。
 - 页面转入后台或离开时清理；浏览器从专题返回时不重播。刷新和重新打开正常播放。
+- 小房子从同源的8台设备手册或3个Home专题返回时，在首次绘制前隐藏欢迎层，随后直接移除；链接和设备仓库无需修改。普通打开及刷新仍播放。判断仅使用当前导航类型及浏览器提供的referrer，不写入持久状态；若浏览器不提供来源，回退正常启动。
 - 减少动态效果模式只保留简单淡入/淡出；没有额外动画依赖。
 
 ## PWA
 
-Home候选缓存升级为 `welding-guide-home-v35`，欢迎CSS使用v10查询参数，以替换已发布v34的旧动画。新增独立火花脚本 `js/splash-sparks.js?v=1` 并加入本项目离线清单；缓存清理逻辑未变，只匹配 `welding-guide-home-`，不控制或清理设备PWA资源。
+Home本地候选缓存升级为 `welding-guide-home-v36`，欢迎逻辑脚本使用 `js/splash.js?v=3`，使后续发布能替换已发布v35。欢迎CSS仍使用v10，火花脚本仍使用v1；缓存清理逻辑未变，只匹配 `welding-guide-home-`，不控制或清理设备PWA资源。
 
 manifest、start_url、scope及现有更新机制保持不变。旧窗口仍在使用旧Service Worker时，应关闭本项目全部窗口后重新打开，使新版本接管。
 
 ## 验证
+
+返回逻辑运行 `node tests/splash-return-test.mjs`：8台手册及3个专题、线上和本地路径、刷新、空来源和外部来源均通过。浏览器实测108和历史专题的小房子返回均跳过欢迎层，刷新仍播放；Console无错误。截图 `tests/home-return-no-splash.jpg`。本项仅本地实现，未提交或发布。
 
 运行 `node tests/splash-test.mjs`、`node tests/splash-sparks-test.mjs`、`node tests/splash-cache-test.mjs` 检查倒计时、粒子随机物理及退出清理、减少动态效果、Canvas不可用降级、离线缓存、系统字体和背景隔离。自然火花390px预览无溢出、Console无错误；截图 `tests/splash-natural-sparks-mobile.jpg`。
 

@@ -13,12 +13,32 @@
   <title>焊机操作工快速处置手册</title>
   <link rel="stylesheet" href="./css/updates.css?v=23">
   <!-- Splash-only additions; the existing homepage below is unchanged. -->
+  <script>
+    // Same-origin manual/Home topic returns bypass the splash before first paint.
+    (function () {
+      try {
+        const navigation = performance.getEntriesByType('navigation')[0];
+        if (navigation && navigation.type === 'reload') return;
+        if (!document.referrer) return;
+        const from = new URL(document.referrer);
+        const here = new URL(location.href);
+        const parent = here.pathname.slice(0, here.pathname.indexOf('/welding-guide-home/') + 1);
+        const manual = /^(?:welding-guide|welding-guide-(?:108|102|122|202|401|411|502))\/(?:index\.html)?$/;
+        const topic = /^welding-guide-home\/pages\/(?:laser-principles|history|safety)\.html$/;
+        const relative = from.pathname.slice(parent.length);
+        if (from.origin === here.origin && from.pathname.startsWith(parent) && (manual.test(relative) || topic.test(relative))) {
+          document.documentElement.classList.add('skip-welcome');
+        }
+      } catch (_) { /* Missing referrer or browser API: keep normal startup. */ }
+    })();
+  </script>
   <style>
+    .skip-welcome .welcome-splash{display:none}
     .welcome-splash{position:fixed;inset:0;z-index:2147483000;height:100vh;height:100dvh;background:#02060e;color:#edf5ff;animation:splash-emergency-exit .01s 4.8s forwards}
     @keyframes splash-emergency-exit{to{opacity:0;visibility:hidden;pointer-events:none}}
   </style>
   <link rel="stylesheet" href="./css/splash.css?v=10">
-  <script src="./js/splash.js?v=2" defer></script>
+  <script src="./js/splash.js?v=3" defer></script>
   <script src="./js/splash-sparks.js?v=1" defer></script>
   <noscript><style>.welcome-splash{display:none}</style></noscript>
 </head>

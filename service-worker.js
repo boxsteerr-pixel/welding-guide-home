@@ -1,8 +1,8 @@
-const CACHE_NAME = "welding-guide-home-v35";
+const CACHE_NAME = "welding-guide-home-v36";
 const APP_ROOT = new URL("./", self.location.href);
 const CORE_ASSETS = [
   "./css/splash.css?v=10",
-  "./js/splash.js?v=2",
+  "./js/splash.js?v=3",
   "./js/splash-sparks.js?v=1",
   "./css/laser-principles.css?v=9",
   "./js/laser-principles.js?v=9",

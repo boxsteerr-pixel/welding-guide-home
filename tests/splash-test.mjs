@@ -3,17 +3,19 @@ import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 const read = file => readFileSync(new URL('../'+file, import.meta.url),'utf8');
 const source = read('js/splash.js');
-function harness({hidden=false,missingNumber=false,brokenFade=false,backNavigation=false}={}) {
+function harness({hidden=false,missingNumber=false,brokenFade=false,backNavigation=false,skipWelcome=false}={}) {
   let now=0, id=0;
   const pending=new Map(), events=new Map(), docEvents=new Map(), winEvents=new Map();
   const number={textContent:'3'};
   const splash={remove(){this.removed=true;},classList:{add(name){if(brokenFade)throw Error('animation failed');splash.leaving=name;}},addEventListener:(name,fn)=>events.set(name,fn),removeEventListener:name=>events.delete(name)};
-  const document={hidden,getElementById:name=>name==='welcome-splash'?splash:missingNumber?null:number,addEventListener:(name,fn)=>docEvents.set(name,fn),removeEventListener:name=>docEvents.delete(name)};
+  const document={documentElement:{classList:{contains:()=>skipWelcome}},hidden,getElementById:name=>name==='welcome-splash'?splash:missingNumber?null:number,addEventListener:(name,fn)=>docEvents.set(name,fn),removeEventListener:name=>docEvents.delete(name)};
   const window={performance:{getEntriesByType:()=>[{type:backNavigation?'back_forward':'navigate'}]},setTimeout(fn,delay){pending.set(++id,{fn,at:now+delay});return id;},clearTimeout:id=>pending.delete(id),addEventListener:(name,fn)=>winEvents.set(name,fn),removeEventListener:name=>winEvents.delete(name)};
   vm.runInNewContext(source,{document,window,Set});
   function tick(time){for(;;){const next=[...pending.entries()].filter(([,t])=>t.at<=time).sort((a,b)=>a[1].at-b[1].at)[0];if(!next)break;now=next[1].at;pending.delete(next[0]);try{next[1].fn();}catch{}}now=time;}
   return {splash,number,pending,events,docEvents,winEvents,document,tick};
 }
+assert.equal(harness({skipWelcome:true}).splash.removed,true);
+assert.equal(harness({skipWelcome:true}).pending.size,0);
 const normal=harness();
 assert.equal(normal.number.textContent,'3');
 normal.tick(999);assert.equal(normal.number.textContent,'3');
@@ -56,8 +58,8 @@ assert.match(css,/7dvh/);assert.match(html,/height:100vh;height:100dvh/);
 assert.match(css,/safe-area-inset-top/);assert.match(css,/safe-area-inset-bottom/);
 assert.match(css,/prefers-reduced-motion:reduce/);
 assert.doesNotMatch(source,/location|localStorage|sessionStorage|history\.|body\.style/);
-for(const file of ['css/splash.css?v=10','js/splash.js?v=2','js/splash-sparks.js?v=1'])assert.ok(sw.includes('./'+file));
+for(const file of ['css/splash.css?v=10','js/splash.js?v=3','js/splash-sparks.js?v=1'])assert.ok(sw.includes('./'+file));
 assert.doesNotMatch(sw,/splash-background\.webp|assets\/fonts\//);
-assert.match(sw,/welding-guide-home-v35/);assert.match(sw,/name.startsWith\("welding-guide-home-"\)/);
+assert.match(sw,/welding-guide-home-v36/);assert.match(sw,/name.startsWith\("welding-guide-home-"\)/);
 const manifest=JSON.parse(read('manifest.json'));assert.equal(manifest.start_url,'./');assert.equal(manifest.scope,'./');
 console.log('Splash: PASS (3→2→1, 3s fade, 3.5s removal, timers/listeners cleanup, hidden/pagehide, 4.5s failsafe, no JS fallback, isolated markup/styles, PWA paths)');

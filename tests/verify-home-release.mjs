@@ -26,6 +26,6 @@ for (let start = 0; start < paths.length; start += 6) {
     if (relative.endsWith('.ttf')) assert.match(type, /font\/ttf|application\/(?:x-font-ttf|octet-stream)/);
   }));
 }
-assert.match(worker, /welding-guide-home-v35/);
+assert.match(worker, /welding-guide-home-v36/);
 assert.ok(worker.includes('name.startsWith("welding-guide-home-")'));
 console.log(`Home release: PASS (${paths.length} live URLs match local SHA256; HTTP 200, MIME, JSON and cache namespace verified)`);
