@@ -60,6 +60,6 @@ assert.match(css,/prefers-reduced-motion:reduce/);
 assert.doesNotMatch(source,/location|localStorage|sessionStorage|history\.|body\.style/);
 for(const file of ['css/splash.css?v=10','js/splash.js?v=3','js/splash-sparks.js?v=1'])assert.ok(sw.includes('./'+file));
 assert.doesNotMatch(sw,/splash-background\.webp|assets\/fonts\//);
-assert.match(sw,/welding-guide-home-v36/);assert.match(sw,/name.startsWith\("welding-guide-home-"\)/);
+assert.match(sw,/welding-guide-home-v37/);assert.match(sw,/name.startsWith\("welding-guide-home-"\)/);
 const manifest=JSON.parse(read('manifest.json'));assert.equal(manifest.start_url,'./');assert.equal(manifest.scope,'./');
 console.log('Splash: PASS (3→2→1, 3s fade, 3.5s removal, timers/listeners cleanup, hidden/pagehide, 4.5s failsafe, no JS fallback, isolated markup/styles, PWA paths)');

@@ -41,7 +41,8 @@
   function openDiagram(photo, url) {
     if (!dialog.showModal) { window.open(url.href, '_blank', 'noopener'); return; }
     largeImage.src = url.href; largeImage.alt = photo.alt;
-    zoomTarget = scene(photo, url, largeImage); imageScroll.replaceChildren(zoomTarget);
+    zoomTarget = photo.raw ? largeImage : scene(photo, url, largeImage); imageScroll.replaceChildren(zoomTarget);
+    if (photo.raw) { largeImage.style.top = ''; dialog.classList.add('defect-lightbox'); }
     dialog.querySelector('#diagram-dialog-title').textContent = photo.title;
     dialog.querySelector('.diagram-original').href = url.href;
     imageScale = 1; zoom(0);
@@ -49,7 +50,16 @@
     dialog.showModal(); document.body.style.overflow = 'hidden';
   }
   dialog.querySelector('.diagram-close').addEventListener('click', function () { dialog.close(); });
-  dialog.addEventListener('close', function () { document.body.style.overflow = priorOverflow; });
+  dialog.addEventListener('close', function () { document.body.style.overflow = priorOverflow; if (dialog.classList) dialog.classList.remove('defect-lightbox'); });
+  dialog.addEventListener('click', function (event) {
+    if (dialog.classList && dialog.classList.contains('defect-lightbox') && event.target === dialog) dialog.close();
+  });
+  if (document.querySelectorAll) document.querySelectorAll('.defect-image-button').forEach(function (button) {
+    button.addEventListener('click', function () {
+      const image = button.querySelector('img');
+      openDiagram({ raw: true, title: image.alt, alt: image.alt }, new URL(image.src, appRoot));
+    });
+  });
   fetch(new URL('data/laser-principles.json?v=9', appRoot)).then(function (response) {
     if (!response.ok) throw new Error('原理内容加载失败');
     return response.json();

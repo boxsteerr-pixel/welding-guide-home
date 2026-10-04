@@ -1,12 +1,19 @@
-const CACHE_NAME = "welding-guide-home-v36";
+const CACHE_NAME = "welding-guide-home-v37";
 const APP_ROOT = new URL("./", self.location.href);
 const CORE_ASSETS = [
   "./css/splash.css?v=10",
   "./js/splash.js?v=3",
   "./js/splash-sparks.js?v=1",
-  "./css/laser-principles.css?v=9",
-  "./js/laser-principles.js?v=9",
+  "./css/laser-principles.css?v=10",
+  "./js/laser-principles.js?v=10",
   "./data/laser-principles.json?v=9",
+  "./assets/images/defects/ce1224e0-7265-4185-a7b8-c5d3a6cd7df1.png",
+  "./assets/images/defects/e60313f4-cf2a-494b-b518-1f8a38f20372.png",
+  "./assets/images/defects/a25f5a93-e741-4b4b-b505-76bef11bb685.png",
+  "./assets/images/defects/95c3074e-1aa4-4159-9036-75a206284210.png",
+  "./assets/images/defects/ff4d3214-fe66-4016-ac08-e2a45aeebad7.png",
+  "./assets/images/defects/133b8bb4-1cd3-46fe-89bf-87996e359871.png",
+  "./assets/images/defects/12ff71f4-f8c3-44fa-8d27-bb0c42c9208c.png",
   "./assets/images/topics/co2-source-08-generation.png",
   "./assets/images/topics/co2-source-09-focusing.png",
   "./assets/images/topics/co2-source-07-protection.png",

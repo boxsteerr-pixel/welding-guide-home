@@ -5,7 +5,7 @@ const listeners=new Map(), buckets=new Map();
 const root='https://example.test/welding-guide-home/';
 const key=request=>typeof request==='string'?request:request.url;
 const cache={store:new Map(),async addAll(urls){for(const url of urls)this.store.set(url,{ok:true,url,clone(){return this;}});},async put(req,res){this.store.set(key(req),res);}};
-buckets.set('welding-guide-home-v35',{store:new Map()});
+buckets.set('welding-guide-home-v36',{store:new Map()});
 buckets.set('operator-guide-1.0.34',{store:new Map()});
 buckets.set('welding-guide-108-v8',{store:new Map()});
 let offline=false;
@@ -14,7 +14,7 @@ vm.runInNewContext(readFileSync(new URL('../service-worker.js',import.meta.url),
 let pending;
 listeners.get('install')({waitUntil:task=>pending=task});await pending;
 listeners.get('activate')({waitUntil:task=>pending=task});await pending;
-assert.ok(!buckets.has('welding-guide-home-v35'));
+assert.ok(!buckets.has('welding-guide-home-v36'));
 assert.ok(buckets.has('operator-guide-1.0.34'));assert.ok(buckets.has('welding-guide-108-v8'));
 offline=true;
 for(const file of ['index.html','css/splash.css?v=10','js/splash.js?v=3','js/splash-sparks.js?v=1']){
@@ -25,4 +25,4 @@ for(const file of ['index.html','css/splash.css?v=10','js/splash.js?v=3','js/spl
 let intercepted=false;
 listeners.get('fetch')({request:{url:'https://example.test/welding-guide/index.html',method:'GET',mode:'navigate'},respondWith:()=>intercepted=true});
 assert.equal(intercepted,false);
-console.log('Splash cache: PASS (offline HTML/CSS/JS; clean background and system fonts; v35→v36; preserves 101/108 caches; project-only scope)');
+console.log('Splash cache: PASS (offline HTML/CSS/JS; clean background and system fonts; v36→v37; preserves 101/108 caches; project-only scope)');

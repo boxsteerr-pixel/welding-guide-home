@@ -14,9 +14,9 @@ const html = await read('pages/laser-principles.html');
 assert.match(html, /1\. 原理概述/); assert.match(html, /激光焊接的基本原理与特点/);
 assert.match(html, /<dialog/); assert.match(html, /manifest.json/);
 assert.match(html, /2\. 常见焊接缺陷/); assert.match(html, /class="topic-entry defects-entry"/);
-assert.match(html, /内容待补充/);
+assert.equal((html.match(/class="defect-card"/g)||[]).length,7);
 const worker = await read('service-worker.js');
-for (const asset of ['css/laser-principles.css?v=9', 'js/laser-principles.js?v=9', 'data/laser-principles.json?v=9']) assert.ok(worker.includes('./' + asset));
+for (const asset of ['css/laser-principles.css?v=10', 'js/laser-principles.js?v=10', 'data/laser-principles.json?v=9']) assert.ok(worker.includes('./' + asset));
 for (const photo of data.diagram.images) assert.ok(worker.includes(photo.src.replace('../', './')));
 class Node {
   constructor(tag) { this.tag = tag; this.children = []; this.dataset = {}; this.style = {}; this.attrs = {}; this.handlers = {}; }
