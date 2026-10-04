@@ -1,0 +1,44 @@
+/* All selectors are scoped to the temporary welcome overlay. */
+/* Local OFL font subsets: 7 team glyphs + 3 welcome glyphs, under 8 KB total. */
+@font-face { font-family:"Splash Team Serif"; src:url('../assets/fonts/noto-serif-sc-team.ttf') format('truetype'); font-style:normal; font-weight:700; font-display:swap; }
+@font-face { font-family:"Splash Welcome Brush"; src:url('../assets/fonts/ma-shan-zheng-welcome.ttf') format('truetype'); font-style:normal; font-weight:400; font-display:swap; }
+.welcome-splash { box-sizing:border-box; overflow:hidden; isolation:isolate; touch-action:none; overscroll-behavior:contain; font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif; }
+.welcome-splash__background,.welcome-splash__shade { position:absolute; inset:0; pointer-events:none; }
+.welcome-splash__background { background:url('../assets/images/splash-background.webp') center center / cover no-repeat; opacity:0; animation:splash-background-in .8s .1s both; }
+.welcome-splash__shade { background:linear-gradient(180deg,rgba(4,16,29,.22),rgba(7,24,43,.3) 32%,rgba(4,16,29,.16) 65%,rgba(4,16,29,.64)),radial-gradient(ellipse at 50% 39%,rgba(4,16,29,.3),transparent 65%); }
+.welcome-splash__message { position:absolute; left:calc(24px + env(safe-area-inset-left,0px)); right:calc(24px + env(safe-area-inset-right,0px)); top:max(calc(110px + env(safe-area-inset-top,0px)),36%); transform:translateY(-50%); text-align:center; }
+.welcome-splash__team { margin:0 0 18px; font-family:"Splash Team Serif","Songti SC","STSong","SimSun",serif; color:#edf7ff; font-size:clamp(23px,7.1vw,40px); font-weight:700; letter-spacing:.075em; line-height:1.5; white-space:nowrap; text-shadow:0 1px 0 #a5c4db,0 3px 1px #355971,0 5px 14px rgba(0,12,29,.65); animation:splash-team-in .65s .15s cubic-bezier(.22,.61,.36,1) both; }
+.welcome-splash__title { margin:0; display:flex; justify-content:center; gap:.035em; font-family:"Splash Welcome Brush","STKaiti","KaiTi",serif; font-size:clamp(76px,26vw,150px); font-weight:400; line-height:1.18; color:#effaff; }
+.welcome-splash__title span { display:inline-block; padding:.08em .015em .12em; text-shadow:0 2px 0 #badff6,0 4px 2px #376d9f,0 5px 24px rgba(31,135,234,.35); animation:splash-title-in .64s cubic-bezier(.22,.61,.36,1) both; animation-delay:.4s; }
+.welcome-splash__title span:nth-child(2) { animation-delay:.52s; }
+.welcome-splash__title span:nth-child(3) { animation-delay:.64s; }
+@supports (background-clip:text) or (-webkit-background-clip:text) {
+  .welcome-splash__title span { background:linear-gradient(165deg,#fff 18%,#eef9ff 38%,#93d4ff 64%,#faf6e9 86%); background-clip:text; -webkit-background-clip:text; color:transparent; text-shadow:none; filter:drop-shadow(0 2px 0 rgba(56,103,153,.8)) drop-shadow(0 4px 12px rgba(19,108,200,.24)); }
+}
+.welcome-splash__stroke { display:block; width:clamp(110px,42vw,220px); height:2px; margin:6px auto 0; background:linear-gradient(90deg,transparent,#bce9ff 25%,#edfaff 48%,#deb57f 72%,transparent); transform-origin:left; animation:splash-stroke-in .7s .88s cubic-bezier(.22,.61,.36,1) both; }
+.welcome-splash__countdown { position:absolute; inset-inline:24px; bottom:calc(9vh + env(safe-area-inset-bottom,0px)); bottom:calc(9dvh + env(safe-area-inset-bottom,0px)); text-align:center; color:#d4e0ea; }
+.welcome-splash__dial { position:relative; width:58px; height:58px; margin:auto; display:grid; place-items:center; font-size:25px; font-weight:400; font-variant-numeric:tabular-nums; }
+.welcome-splash__dial svg { position:absolute; inset:0; width:100%; height:100%; fill:none; stroke-width:1.4; transform:rotate(-90deg); }
+.welcome-splash__track { stroke:rgba(215,231,244,.22); }
+.welcome-splash__progress { stroke:#b3e2ff; stroke-dasharray:100; stroke-dashoffset:0; stroke-linecap:round; animation:splash-ring 3s linear both; }
+.welcome-splash__countdown p { font-size:13px; letter-spacing:.1em; opacity:.8; margin:13px 0 0; }
+.welcome-splash--leaving { opacity:0; pointer-events:none; transition:opacity .5s ease; }
+@keyframes splash-background-in { from{opacity:0} to{opacity:1} }
+@keyframes splash-team-in { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+@keyframes splash-title-in { from{opacity:0;transform:translateY(18px) scale(.97)} to{opacity:1;transform:translateY(0) scale(1)} }
+@keyframes splash-stroke-in { from{opacity:0;transform:scaleX(0)} to{opacity:.8;transform:scaleX(1)} }
+@keyframes splash-ring { to{stroke-dashoffset:100} }
+@media (orientation:landscape) and (max-height:500px) {
+  .welcome-splash__message { top:36%; }
+  .welcome-splash__team { font-size:23px; margin-bottom:4px; }
+  .welcome-splash__title { font-size:66px; }
+  .welcome-splash__stroke { margin-top:10px; }
+  .welcome-splash__countdown { bottom:calc(16px + env(safe-area-inset-bottom,0px)); }
+  .welcome-splash__dial { width:42px;height:42px;font-size:20px; }
+  .welcome-splash__countdown p { margin-top:6px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .welcome-splash__team,.welcome-splash__title span,.welcome-splash__background { animation-name:splash-background-in; animation-duration:.45s; animation-delay:0s; transform:none; }
+  .welcome-splash__stroke { animation:none;opacity:.7;transform:none; }
+  .welcome-splash__progress { animation:none; }
+}

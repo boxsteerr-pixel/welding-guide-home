@@ -12,8 +12,34 @@
   <link rel="stylesheet" href="./css/mobile-header.css?v=1">
   <title>焊机操作工快速处置手册</title>
   <link rel="stylesheet" href="./css/updates.css?v=23">
+  <!-- Splash-only additions; the existing homepage below is unchanged. -->
+  <style>
+    .welcome-splash{position:fixed;inset:0;z-index:2147483000;height:100vh;height:100dvh;background:#071a2d;color:#fff;animation:splash-emergency-exit .01s 4.8s forwards}
+    @keyframes splash-emergency-exit{to{opacity:0;visibility:hidden;pointer-events:none}}
+  </style>
+  <link rel="preload" href="./assets/fonts/noto-serif-sc-team.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="./assets/fonts/ma-shan-zheng-welcome.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="./css/splash.css?v=4">
+  <script src="./js/splash.js?v=2" defer></script>
+  <noscript><style>.welcome-splash{display:none}</style></noscript>
 </head>
 <body>
+  <div class="welcome-splash" id="welcome-splash" aria-hidden="true">
+    <div class="welcome-splash__background"></div>
+    <div class="welcome-splash__shade"></div>
+    <div class="welcome-splash__message">
+      <p class="welcome-splash__team">冷轧焊接管理组</p>
+      <p class="welcome-splash__title" aria-label="欢迎您"><span>欢</span><span>迎</span><span>您</span></p>
+      <span class="welcome-splash__stroke"></span>
+    </div>
+    <div class="welcome-splash__countdown">
+      <div class="welcome-splash__dial">
+        <svg viewBox="0 0 64 64" focusable="false"><circle class="welcome-splash__track" cx="32" cy="32" r="29"/><circle class="welcome-splash__progress" cx="32" cy="32" r="29" pathLength="100"/></svg>
+        <span id="welcome-splash-number">3</span>
+      </div>
+      <p>即将进入手册…</p>
+    </div>
+  </div>
   <a class="skip-link" href="#device-grid">跳到设备列表</a>
   <div class="app-shell">
     <header class="hero">
