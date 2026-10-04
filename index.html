@@ -14,23 +14,26 @@
   <link rel="stylesheet" href="./css/updates.css?v=23">
   <!-- Splash-only additions; the existing homepage below is unchanged. -->
   <style>
-    .welcome-splash{position:fixed;inset:0;z-index:2147483000;height:100vh;height:100dvh;background:#071a2d;color:#fff;animation:splash-emergency-exit .01s 4.8s forwards}
+    .welcome-splash{position:fixed;inset:0;z-index:2147483000;height:100vh;height:100dvh;background:#02060e;color:#edf5ff;animation:splash-emergency-exit .01s 4.8s forwards}
     @keyframes splash-emergency-exit{to{opacity:0;visibility:hidden;pointer-events:none}}
   </style>
-  <link rel="preload" href="./assets/fonts/noto-serif-sc-team.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="preload" href="./assets/fonts/ma-shan-zheng-welcome.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="./css/splash.css?v=4">
+  <link rel="stylesheet" href="./css/splash.css?v=10">
   <script src="./js/splash.js?v=2" defer></script>
+  <script src="./js/splash-sparks.js?v=1" defer></script>
   <noscript><style>.welcome-splash{display:none}</style></noscript>
 </head>
 <body>
   <div class="welcome-splash" id="welcome-splash" aria-hidden="true">
-    <div class="welcome-splash__background"></div>
-    <div class="welcome-splash__shade"></div>
+    <canvas class="welcome-splash__particles" id="welcome-sparks"></canvas>
     <div class="welcome-splash__message">
-      <p class="welcome-splash__team">冷轧焊接管理组</p>
-      <p class="welcome-splash__title" aria-label="欢迎您"><span>欢</span><span>迎</span><span>您</span></p>
-      <span class="welcome-splash__stroke"></span>
+      <p class="welcome-splash__team" aria-label="冷轧焊接管理组"><span style="--heat-delay:.30s">冷</span><span style="--heat-delay:.44s">轧</span><span style="--heat-delay:.58s">焊</span><span style="--heat-delay:.72s">接</span><span style="--heat-delay:.86s">管</span><span style="--heat-delay:1s">理</span><span style="--heat-delay:1.14s">组</span></p>
+      <p class="welcome-splash__title" aria-label="欢迎您"><span style="--heat-delay:.43s">欢</span><span style="--heat-delay:.72s">迎</span><span style="--heat-delay:1.01s">您</span></p>
+      <div class="welcome-splash__seam">
+        <span class="welcome-splash__bead"></span>
+
+        <span class="welcome-splash__travel"><i class="welcome-splash__head"></i></span>
+      </div>
+      <p class="welcome-splash__sub">精密焊接</p>
     </div>
     <div class="welcome-splash__countdown">
       <div class="welcome-splash__dial">
