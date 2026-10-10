@@ -23,14 +23,15 @@ assert.equal((html.match(/<a class="device-card device-card--ready"/g) || []).le
 assert.equal(manifest.start_url, "./");
 assert.equal(manifest.scope, "./");
 assert.equal(manifest.icons.length, 2);
-assert.match(sw, /welding-guide-home-v38/);
+assert.match(sw, /welding-guide-home-v40/);
 assert.match(await read("js/app.js"), /WELDING_POINT = \{ x: 0\.821, y: 0\.646 \}/);
 assert.ok(html.includes("./js/app.js?v=21-aligned"));
 assert.ok(sw.includes("./js/app.js?v=21-aligned"));
 assert.equal(manifest.name, "焊机操作工快速处置手册");
 assert.ok(html.includes("<title>焊机操作工快速处置手册</title>"));
-assert.ok(html.includes("./css/style.css?v=14-blue-light"));
-assert.ok(sw.includes("./css/style.css?v=14-blue-light"));
+assert.ok(html.includes("./css/style.css?v=16-ready-blue"));
+assert.ok(sw.includes("./css/style.css?v=16-ready-blue"));
+assert.equal((html.match(/data-status="active"/g) || []).length, 2);
 const homeCss = await read("css/style.css");
 assert.match(homeCss, /rgba\(126,211,255,\.4\)/);
 assert.match(homeCss, /#a5dfff, #effbff/);
