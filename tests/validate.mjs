@@ -17,12 +17,13 @@ assert.match(html, /MADE BY FANGPING/);
 for (const id of ["102", "122", "202", "401", "411", "502"]) {
   assert.match(html, new RegExp(`https://boxsteerr-pixel\\.github\\.io/welding-guide-${id}/`), `${id} 缺少已发布入口`);
 }
-assert.equal((html.match(/框架已上线 · 内容待录入/g) || []).length, 6);
+assert.equal((html.match(/框架已上线 · 内容待录入/g) || []).length, 5);
+assert.match(html, /aria-label="进入401焊机正式手册"[\s\S]*?>401<[\s\S]*?device-card__state">正式使用<\/span>/);
 assert.equal((html.match(/<a class="device-card device-card--ready"/g) || []).length, 8);
 assert.equal(manifest.start_url, "./");
 assert.equal(manifest.scope, "./");
 assert.equal(manifest.icons.length, 2);
-assert.match(sw, /welding-guide-home-v37/);
+assert.match(sw, /welding-guide-home-v38/);
 assert.match(await read("js/app.js"), /WELDING_POINT = \{ x: 0\.821, y: 0\.646 \}/);
 assert.ok(html.includes("./js/app.js?v=21-aligned"));
 assert.ok(sw.includes("./js/app.js?v=21-aligned"));
