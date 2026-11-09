@@ -17,13 +17,13 @@ assert.match(html, /MADE BY FANGPING/);
 for (const id of ["102", "122", "202", "401", "411", "502"]) {
   assert.match(html, new RegExp(`https://boxsteerr-pixel\\.github\\.io/welding-guide-${id}/`), `${id} 缺少已发布入口`);
 }
-assert.equal((html.match(/框架已上线 · 内容待录入/g) || []).length, 3);
+assert.equal((html.match(/框架已上线 · 内容待录入/g) || []).length, 0);
 assert.match(html, /aria-label="进入401焊机正式手册"[\s\S]*?>401<[\s\S]*?device-card__state">正式使用<\/span>/);
 assert.equal((html.match(/<a class="device-card device-card--ready"/g) || []).length, 8);
 assert.equal(manifest.start_url, "./");
 assert.equal(manifest.scope, "./");
 assert.equal(manifest.icons.length, 2);
-assert.match(sw, /welding-guide-home-v42/);
+assert.match(sw, /welding-guide-home-v43/);
 assert.match(await read("js/app.js"), /WELDING_POINT = \{ x: 0\.821, y: 0\.646 \}/);
 assert.ok(html.includes("./js/app.js?v=21-aligned"));
 assert.ok(sw.includes("./js/app.js?v=21-aligned"));
@@ -31,7 +31,7 @@ assert.equal(manifest.name, "焊机操作工快速处置手册");
 assert.ok(html.includes("<title>焊机操作工快速处置手册</title>"));
 assert.ok(html.includes("./css/style.css?v=16-ready-blue"));
 assert.ok(sw.includes("./css/style.css?v=16-ready-blue"));
-assert.equal((html.match(/data-status="active"/g) || []).length, 5);
+assert.equal((html.match(/data-status="active"/g) || []).length, 8);
 const homeCss = await read("css/style.css");
 assert.match(homeCss, /rgba\(126,211,255,\.4\)/);
 assert.match(homeCss, /#a5dfff, #effbff/);
