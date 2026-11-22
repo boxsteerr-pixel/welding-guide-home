@@ -23,7 +23,7 @@ assert.equal((html.match(/<a class="device-card device-card--ready"/g) || []).le
 assert.equal(manifest.start_url, "./");
 assert.equal(manifest.scope, "./");
 assert.equal(manifest.icons.length, 2);
-assert.match(sw, /welding-guide-home-v46/);
+assert.match(sw, /welding-guide-home-v47/);
 assert.match(await read("js/app.js"), /WELDING_POINT = \{ x: 0\.821, y: 0\.646 \}/);
 assert.ok(html.includes("./js/app.js?v=21-aligned"));
 assert.ok(sw.includes("./js/app.js?v=21-aligned"));
@@ -66,10 +66,10 @@ for (const id of ["laser-principles", "history", "safety"]) {
   const page = await read(`pages/${id}.html`);
   assert.ok(page.includes(`data-topic="${id}"`));
   assert.ok(page.includes('href="../index.html"'));
-  assert.ok(page.includes(id === "laser-principles" ? 'src="../js/laser-principles.js?v=10"' : 'src="../js/topics.js?v=' + (id === "safety" ? "31" : "34") + '"'));
+  assert.ok(page.includes(id === "laser-principles" ? 'src="../js/laser-principles.js?v=10"' : 'src="../js/topics.js?v=' + (id === "safety" ? "31" : "35") + '"'));
   assert.ok(page.includes('class="topic-entry"'));
   assert.match(page, /class="entry-content(?:\s[^"]*)?"/);
-  assert.ok(page.includes('href="../css/topics.css?v=' + (id === "history" ? "21" : "19") + '"'));
+  assert.ok(page.includes('href="../css/topics.css?v=' + (id === "history" ? "22" : "19") + '"'));
   assert.doesNotMatch(page, /topic-nav|专题导航/);
   assert.ok(Array.isArray(topics.topics[id].items));
 }
@@ -82,6 +82,11 @@ for (const photo of historySections.flatMap((section) => section.images || [])) 
   const url = new URL(photo.src, new URL("../data/topics.json", import.meta.url));
   const bytes = await readFile(url);
   assert.equal(bytes.subarray(8, 12).toString(), "WEBP");
+  assert.match(photo.preview.src, /^\.\.\/assets\/images\/history\/[a-z-]+-preview\.webp$/);
+  assert.ok(sw.includes(`"${photo.preview.src.slice(1)}"`));
+  const preview = await readFile(new URL(photo.preview.src, new URL("../data/topics.json", import.meta.url)));
+  assert.equal(preview.subarray(8, 12).toString(), "WEBP");
+  assert.ok(preview.length < bytes.length);
 }
 assert.match(await read("css/style.css"), /prefers-reduced-motion: reduce/);
 for (const icon of ["welding-head", "feature-principle", "feature-history", "feature-safety"]) {
@@ -95,6 +100,6 @@ for (const id of ["principle", "history", "safety"]) {
   const file = `assets/images/topics/${id}-page.png`;
   const bytes = await readFile(path.join(root, file));
   assert.equal(bytes.subarray(1, 4).toString(), "PNG");
-  assert.ok(sw.includes(`./${file}`));
+  assert.ok(sw.includes(id === "history" ? "./assets/images/topics/history-page-mobile.webp" : `./${file}`));
 }
 console.log("welding-guide-home validation: PASS");

@@ -2,7 +2,7 @@
   "use strict";
   const container = document.querySelector("#topic-content");
   const topicId = document.body.dataset.topic;
-  const dataVersion = topicId === "history" ? "34" : "31";
+  const dataVersion = topicId === "history" ? "35" : "31";
   const dataUrl = new URL("../data/topics.json?v=" + dataVersion, location.href);
   const caseTemplate = document.querySelector("#history-case-template");
   const entryContent = caseTemplate ? container : container.querySelector(".entry-content");
@@ -17,11 +17,19 @@
     (item.paragraphs || []).forEach(function (paragraph) { container.append(element("p", paragraph)); });
     (item.images || []).forEach(function (photo) {
       const url = new URL(photo.src, dataUrl);
+      const previewUrl = photo.preview ? new URL(photo.preview.src, dataUrl) : url;
       // Only Home-owned images; no dependencies on any device repository.
-      const appRoot = new URL("../", location.href);
-      if (url.origin !== appRoot.origin || !url.pathname.startsWith(appRoot.pathname + "assets/images/")) return;
+      const imageRoot = new URL("../assets/images/", location.href);
+      if (!url.href.startsWith(imageRoot.href) || !previewUrl.href.startsWith(imageRoot.href)) return;
       const figure = element("figure"), img = element("img");
-      img.src = url.href; img.alt = photo.alt || ""; img.loading = "lazy";
+      img.alt = photo.alt || "";
+      img.loading = "lazy";
+      img.decoding = "async";
+      if (photo.preview) {
+        img.width = photo.preview.width;
+        img.height = photo.preview.height;
+      }
+      img.src = previewUrl.href;
       if (topicId === "history") {
         const link = element("a");
         link.href = url.href;

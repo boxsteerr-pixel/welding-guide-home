@@ -22,9 +22,9 @@ for(let i=0;i<7;i++) {
 }
 const sw=await read('service-worker.js'),listeners=new Map(),store=new Map();
 const key=r=>typeof r==='string'?r:r.url;
-const cache={addAll:async urls=>{for(const url of urls)store.set(url,{ok:true,url});},put:async()=>{}};
+const cache={addAll:async urls=>{for(const url of urls)store.set(key(url),{ok:true,url:key(url)});},put:async()=>{}};
 let offline=false,pending;
-vm.runInNewContext(sw,{URL,Promise,self:{location:{href:'https://test/welding-guide-home/service-worker.js',origin:'https://test'},clients:{claim:async()=>{}},addEventListener:(n,f)=>listeners.set(n,f)},caches:{open:async()=>cache,match:async r=>store.get(key(r)),keys:async()=>[],delete:async()=>true},fetch:async()=>{if(offline)throw Error('offline');}});
+vm.runInNewContext(sw,{URL,Request,Promise,self:{location:{href:'https://test/welding-guide-home/service-worker.js',origin:'https://test'},clients:{claim:async()=>{}},addEventListener:(n,f)=>listeners.set(n,f)},caches:{open:async()=>cache,match:async r=>store.get(key(r)),keys:async()=>[],delete:async()=>true},fetch:async()=>{if(offline)throw Error('offline');}});
 listeners.get('install')({waitUntil:p=>pending=p});await pending;offline=true;
 for(const id of ids){let response;listeners.get('fetch')({request:{url:'https://test/welding-guide-home/assets/images/defects/'+id+'.png',method:'GET',mode:'cors'},respondWith:p=>response=p});assert.ok((await response).ok);}
 assert.match(await read('css/laser-principles.css'),/\.defect-image-button img \{[^}]*width: 100%; height: auto; object-fit: contain/);

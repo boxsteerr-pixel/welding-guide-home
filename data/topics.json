@@ -19,8 +19,8 @@
                 "11 月 15 日 12:17 开始物流调整，计划停机 12 小时。检修人员再次更换光闸与气缸，逐段调整输出镜、第一和第二反射镜及聚焦镜之间的光路，校准焦深位置。18:21 开机试车。"
               ],
               "images": [
-                { "src": "../assets/images/history/resonator-alarm.webp?v=2", "alt": "分两行标出的停机提示，第一行为谐振腔漏水报警，第二行为激光器未准备好", "caption": "图 1 · 停机画面的两条提示，① 谐振腔漏水报警，② 激光器未准备好。" },
-                { "src": "../assets/images/history/penetration-monitor.webp?v=2", "alt": "箭头分别指向上方的监测曲线和底部的判定色带", "caption": "图 2 · 3.0 mm 带钢穿透率偏低时的监测画面。上方为监测曲线，底部为判定色带。" }
+                { "src": "../assets/images/history/resonator-alarm.webp?v=2", "preview": { "src": "../assets/images/history/resonator-alarm-preview.webp", "width": 540, "height": 210 }, "alt": "分两行标出的停机提示，第一行为谐振腔漏水报警，第二行为激光器未准备好", "caption": "图 1 · 停机画面的两条提示，① 谐振腔漏水报警，② 激光器未准备好。" },
+                { "src": "../assets/images/history/penetration-monitor.webp?v=2", "preview": { "src": "../assets/images/history/penetration-monitor-preview.webp", "width": 540, "height": 255 }, "alt": "箭头分别指向上方的监测曲线和底部的判定色带", "caption": "图 2 · 3.0 mm 带钢穿透率偏低时的监测画面。上方为监测曲线，底部为判定色带。" }
               ]
             },
             {
@@ -35,10 +35,10 @@
                 "6. 点检记录。激光源谐振器每月点检，包含光闸气缸。11 月 13 日物流调整期间检查时，记录为气缸动作正常，未发现光闸本体漏水。"
               ],
               "images": [
-                { "src": "../assets/images/history/fan-alarm.webp?v=2", "alt": "局部放大的报警记录及其中文释义，气体回路频率未达到额定值", "caption": "图 4a · 激光源历史报警，气体回路频率未达到额定值。" },
-                { "src": "../assets/images/history/output-mirror-crack.webp?v=2", "alt": "两个箭头分别标出输出镜的主裂纹和分支裂纹", "caption": "图 4b · 输出镜靠光闸侧可见主裂纹及分支裂纹。" },
-                { "src": "../assets/images/history/shutter-notch.webp?v=2", "alt": "红圈圈出光闸台阶的缺口范围，黄色箭头指向缺口表面", "caption": "图 5 · 红圈圈出光闸本体与吸收器接合处的台阶缺口。" },
-                { "src": "../assets/images/history/damaged-water-seal.webp?v=2", "alt": "黄色箭头指向光束吸收器下缘接合处的受损水封", "caption": "图 6 · 黄色箭头指向光束吸收器下缘接合处的水封损伤。" }
+                { "src": "../assets/images/history/fan-alarm.webp?v=2", "preview": { "src": "../assets/images/history/fan-alarm-preview.webp", "width": 540, "height": 139 }, "alt": "局部放大的报警记录及其中文释义，气体回路频率未达到额定值", "caption": "图 4a · 激光源历史报警，气体回路频率未达到额定值。" },
+                { "src": "../assets/images/history/output-mirror-crack.webp?v=2", "preview": { "src": "../assets/images/history/output-mirror-crack-preview.webp", "width": 540, "height": 518 }, "alt": "两个箭头分别标出输出镜的主裂纹和分支裂纹", "caption": "图 4b · 输出镜靠光闸侧可见主裂纹及分支裂纹。" },
+                { "src": "../assets/images/history/shutter-notch.webp?v=2", "preview": { "src": "../assets/images/history/shutter-notch-preview.webp", "width": 540, "height": 258 }, "alt": "红圈圈出光闸台阶的缺口范围，黄色箭头指向缺口表面", "caption": "图 5 · 红圈圈出光闸本体与吸收器接合处的台阶缺口。" },
+                { "src": "../assets/images/history/damaged-water-seal.webp?v=2", "preview": { "src": "../assets/images/history/damaged-water-seal-preview.webp", "width": 540, "height": 331 }, "alt": "黄色箭头指向光束吸收器下缘接合处的受损水封", "caption": "图 6 · 黄色箭头指向光束吸收器下缘接合处的水封损伤。" }
               ]
             },
             {

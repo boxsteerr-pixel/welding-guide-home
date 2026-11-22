@@ -1,4 +1,4 @@
-const CACHE_NAME = "welding-guide-home-v46";
+const CACHE_NAME = "welding-guide-home-v47";
 const APP_ROOT = new URL("./", self.location.href);
 const CORE_ASSETS = [
   "./css/splash.css?v=10",
@@ -53,16 +53,23 @@ const CORE_ASSETS = [
   "./data/topics.json",
   "./data/topics.json?v=18",
   "./assets/images/topics/principle-page.png",
-  "./assets/images/topics/history-page.png",
+  "./assets/images/topics/history-page-mobile.webp",
   "./assets/images/topics/safety-page.png",
   "./assets/icons/topic-principle-entry.svg",
   "./assets/icons/topic-history-entry.svg",
   "./assets/icons/topic-safety-entry.svg",
   "./pages/laser-principles.html",
   "./pages/history.html",
-  "./css/topics.css?v=21",
-  "./js/topics.js?v=34",
-  "./data/topics.json?v=34",
+  "./css/topics.css?v=22",
+  "./js/topics.js?v=35",
+  "./data/topics.json?v=35",
+  "./assets/images/topics/history-3d-mobile.webp",
+  "./assets/images/history/resonator-alarm-preview.webp",
+  "./assets/images/history/fan-alarm-preview.webp",
+  "./assets/images/history/output-mirror-crack-preview.webp",
+  "./assets/images/history/shutter-notch-preview.webp",
+  "./assets/images/history/damaged-water-seal-preview.webp",
+  "./assets/images/history/penetration-monitor-preview.webp",
   "./assets/images/history/resonator-alarm.webp?v=2",
   "./assets/images/history/fan-alarm.webp?v=2",
   "./assets/images/history/output-mirror-crack.webp?v=2",
@@ -82,7 +89,8 @@ const CORE_ASSETS = [
 ].map(function (path) { return new URL(path, APP_ROOT).toString(); });
 
 self.addEventListener("install", function (event) {
-  event.waitUntil(caches.open(CACHE_NAME).then(function (cache) { return cache.addAll(CORE_ASSETS); }));
+  const requests = CORE_ASSETS.map(function (url) { return new Request(url, { priority: "low" }); });
+  event.waitUntil(caches.open(CACHE_NAME).then(function (cache) { return cache.addAll(requests); }));
 });
 
 self.addEventListener("activate", function (event) {
@@ -101,7 +109,7 @@ self.addEventListener("fetch", function (event) {
   const url = new URL(request.url);
   if (request.method !== "GET" || url.origin !== self.location.origin || !url.pathname.startsWith(APP_ROOT.pathname)) return;
 
-  if (request.mode === "navigate") {
+  if (request.mode === "navigate" && !url.pathname.startsWith(new URL("assets/images/history/", APP_ROOT).pathname)) {
     event.respondWith(fetch(request).then(function (response) {
       const copy = response.clone();
       caches.open(CACHE_NAME).then(function (cache) { cache.put(request, copy); });

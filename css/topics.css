@@ -1,7 +1,7 @@
 :root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; color: #102a40; background: #eef5f9; }
 * { box-sizing: border-box; }
 body { --accent: #00d4ff; --ink: #083151; --paper: #d4ecff; --photo: url("../assets/images/topics/principle-page.png"); margin: 0; line-height: 1.6; }
-body[data-topic="history"] { --accent: #ffab08; --ink: #512707; --paper: #ffe1bd; --photo: url("../assets/images/topics/history-page.png"); }
+body[data-topic="history"] { --accent: #ffab08; --ink: #512707; --paper: #ffe1bd; --photo: url("../assets/images/topics/history-page-mobile.webp"); }
 body[data-topic="safety"] { --accent: #22ef68; --ink: #07371d; --paper: #d1f2d9; --photo: url("../assets/images/topics/safety-page.png"); }
 .topic-shell { max-width: 560px; min-height: max(100svh, 820px); margin: auto; background-color: var(--paper); background-image: linear-gradient(rgba(255,255,255,.28), rgba(255,255,255,.28)), var(--photo); background-position: center, center bottom; background-size: 100% 100%, auto 200%; background-repeat: no-repeat; }
 .topic-header { padding: calc(14px + env(safe-area-inset-top)) 26px 28px; min-height: 392px; color: #fff; border-radius: 0 0 30px 30px; background-color: var(--ink); background-image: linear-gradient(90deg, rgba(0,0,0,.65), rgba(0,0,0,.34) 55%, transparent 90%), var(--photo); background-size: 100% 100%, auto 240%; background-position: center, right top; background-repeat: no-repeat; }
