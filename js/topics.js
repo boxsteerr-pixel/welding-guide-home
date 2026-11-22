@@ -2,9 +2,10 @@
   "use strict";
   const container = document.querySelector("#topic-content");
   const topicId = document.body.dataset.topic;
-  const dataVersion = topicId === "history" ? "33" : "31";
+  const dataVersion = topicId === "history" ? "34" : "31";
   const dataUrl = new URL("../data/topics.json?v=" + dataVersion, location.href);
-  const entryContent = container.querySelector(".entry-content");
+  const caseTemplate = document.querySelector("#history-case-template");
+  const entryContent = caseTemplate ? container : container.querySelector(".entry-content");
 
   function element(tag, text) {
     const node = document.createElement(tag);
@@ -46,7 +47,11 @@
     document.querySelector("h1").setAttribute("aria-label", topic.title);
     document.querySelector(".topic-subtitle").textContent = topic.subtitle;
     document.title = topic.title + " · 焊机操作工快速处置手册";
-    if (!topic.items.length) { container.dataset.state = "empty"; return; }
+    if (!topic.items.length) {
+      if (caseTemplate) entryContent.replaceChildren(element("p", "暂无历史案例。"));
+      container.dataset.state = "empty";
+      return;
+    }
     entryContent.replaceChildren();
     if (topicId === "safety") {
       const icons = ["lock-fill", "gear-fill", "shield-fill-check", "lightning-fill", "sun-fill", "exclamation-circle-fill"];
@@ -89,7 +94,7 @@
     topic.items.forEach(function (item) {
       const article = element("article");
       article.className = "topic-item";
-      article.append(element("h2", item.title));
+      if (!caseTemplate) article.append(element("h2", item.title));
       if (item.summary) article.append(element("p", item.summary));
       if (topicId === "history") {
         const hint = element("p", "轻点图片可查看大图。");
@@ -99,11 +104,18 @@
       appendContent(article, item);
       (item.sections || []).forEach(function (section) {
         const sectionContent = element("section");
-        sectionContent.append(element("h3", section.title));
+        sectionContent.append(element(caseTemplate ? "h2" : "h3", section.title));
         appendContent(sectionContent, section);
         article.append(sectionContent);
       });
-      entryContent.append(article);
+      if (caseTemplate) {
+        const entry = caseTemplate.content.cloneNode(true);
+        entry.querySelector(".case-title").textContent = item.title;
+        entry.querySelector(".entry-content").append(article);
+        entryContent.append(entry);
+      } else {
+        entryContent.append(article);
+      }
     });
     container.dataset.state = "ready";
   }).catch(function () {

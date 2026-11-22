@@ -1,4 +1,4 @@
-const CACHE_NAME = "welding-guide-home-v45";
+const CACHE_NAME = "welding-guide-home-v46";
 const APP_ROOT = new URL("./", self.location.href);
 const CORE_ASSETS = [
   "./css/splash.css?v=10",
@@ -60,9 +60,9 @@ const CORE_ASSETS = [
   "./assets/icons/topic-safety-entry.svg",
   "./pages/laser-principles.html",
   "./pages/history.html",
-  "./css/topics.css?v=20",
-  "./js/topics.js?v=33",
-  "./data/topics.json?v=33",
+  "./css/topics.css?v=21",
+  "./js/topics.js?v=34",
+  "./data/topics.json?v=34",
   "./assets/images/history/resonator-alarm.webp?v=2",
   "./assets/images/history/fan-alarm.webp?v=2",
   "./assets/images/history/output-mirror-crack.webp?v=2",

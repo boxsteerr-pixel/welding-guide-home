@@ -23,7 +23,7 @@ assert.equal((html.match(/<a class="device-card device-card--ready"/g) || []).le
 assert.equal(manifest.start_url, "./");
 assert.equal(manifest.scope, "./");
 assert.equal(manifest.icons.length, 2);
-assert.match(sw, /welding-guide-home-v45/);
+assert.match(sw, /welding-guide-home-v46/);
 assert.match(await read("js/app.js"), /WELDING_POINT = \{ x: 0\.821, y: 0\.646 \}/);
 assert.ok(html.includes("./js/app.js?v=21-aligned"));
 assert.ok(sw.includes("./js/app.js?v=21-aligned"));
@@ -66,10 +66,10 @@ for (const id of ["laser-principles", "history", "safety"]) {
   const page = await read(`pages/${id}.html`);
   assert.ok(page.includes(`data-topic="${id}"`));
   assert.ok(page.includes('href="../index.html"'));
-  assert.ok(page.includes(id === "laser-principles" ? 'src="../js/laser-principles.js?v=10"' : 'src="../js/topics.js?v=' + (id === "safety" ? "31" : "33") + '"'));
+  assert.ok(page.includes(id === "laser-principles" ? 'src="../js/laser-principles.js?v=10"' : 'src="../js/topics.js?v=' + (id === "safety" ? "31" : "34") + '"'));
   assert.ok(page.includes('class="topic-entry"'));
   assert.match(page, /class="entry-content(?:\s[^"]*)?"/);
-  assert.ok(page.includes('href="../css/topics.css?v=' + (id === "history" ? "20" : "19") + '"'));
+  assert.ok(page.includes('href="../css/topics.css?v=' + (id === "history" ? "21" : "19") + '"'));
   assert.doesNotMatch(page, /topic-nav|专题导航/);
   assert.ok(Array.isArray(topics.topics[id].items));
 }

@@ -36,10 +36,12 @@ body[data-topic="safety"] .entry-icon { filter: invert(43%) sepia(92%) saturate(
 .topic-item figure { margin: 18px 0; }
 .topic-item figcaption { font-size: 12px; color: #617b8e; }
 body[data-topic="history"] main { padding-bottom: 28px; }
+body[data-topic="history"] .topic-header { min-height: 0; }
+body[data-topic="history"] .topic-entry + .topic-entry { margin-top: 12px; }
+body[data-topic="history"] .topic-entry summary:focus-visible { outline-offset: -4px; }
 body[data-topic="history"] .entry-content { padding-inline: clamp(12px, 4vw, 20px); }
-body[data-topic="history"] .topic-item h2 { line-height: 1.4; }
 body[data-topic="history"] .topic-item section { margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(30,70,80,.15); }
-body[data-topic="history"] .topic-item h3 { margin: 0 0 8px; font-size: 18px; }
+body[data-topic="history"] .topic-item h2 { margin: 0 0 8px; font-size: 18px; line-height: 1.4; }
 body[data-topic="history"] .topic-item p { line-height: 1.75; }
 .history-image-hint { font-size: 14px; }
 body[data-topic="history"] .topic-item figure a { display: block; }
