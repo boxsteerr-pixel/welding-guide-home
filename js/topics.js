@@ -2,13 +2,39 @@
   "use strict";
   const container = document.querySelector("#topic-content");
   const topicId = document.body.dataset.topic;
-  const dataUrl = new URL("../data/topics.json?v=31", location.href);
+  const dataVersion = topicId === "history" ? "33" : "31";
+  const dataUrl = new URL("../data/topics.json?v=" + dataVersion, location.href);
   const entryContent = container.querySelector(".entry-content");
 
   function element(tag, text) {
     const node = document.createElement(tag);
     if (text) node.textContent = text;
     return node;
+  }
+
+  function appendContent(container, item) {
+    (item.paragraphs || []).forEach(function (paragraph) { container.append(element("p", paragraph)); });
+    (item.images || []).forEach(function (photo) {
+      const url = new URL(photo.src, dataUrl);
+      // Only Home-owned images; no dependencies on any device repository.
+      const appRoot = new URL("../", location.href);
+      if (url.origin !== appRoot.origin || !url.pathname.startsWith(appRoot.pathname + "assets/images/")) return;
+      const figure = element("figure"), img = element("img");
+      img.src = url.href; img.alt = photo.alt || ""; img.loading = "lazy";
+      if (topicId === "history") {
+        const link = element("a");
+        link.href = url.href;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.setAttribute("aria-label", "查看大图（新窗口） · " + img.alt);
+        link.append(img);
+        figure.append(link);
+      } else {
+        figure.append(img);
+      }
+      if (photo.caption) figure.append(element("figcaption", photo.caption));
+      container.append(figure);
+    });
   }
 
   fetch(dataUrl).then(function (response) {
@@ -65,17 +91,17 @@
       article.className = "topic-item";
       article.append(element("h2", item.title));
       if (item.summary) article.append(element("p", item.summary));
-      (item.paragraphs || []).forEach(function (paragraph) { article.append(element("p", paragraph)); });
-      (item.images || []).forEach(function (photo) {
-        const url = new URL(photo.src, dataUrl);
-        // Only Home-owned images; no dependencies on any device repository.
-        const appRoot = new URL("../", location.href);
-        if (url.origin !== appRoot.origin || !url.pathname.startsWith(appRoot.pathname + "assets/images/")) return;
-        const figure = element("figure"), img = element("img");
-        img.src = url.href; img.alt = photo.alt || ""; img.loading = "lazy";
-        figure.append(img);
-        if (photo.caption) figure.append(element("figcaption", photo.caption));
-        article.append(figure);
+      if (topicId === "history") {
+        const hint = element("p", "轻点图片可查看大图。");
+        hint.className = "history-image-hint";
+        article.append(hint);
+      }
+      appendContent(article, item);
+      (item.sections || []).forEach(function (section) {
+        const sectionContent = element("section");
+        sectionContent.append(element("h3", section.title));
+        appendContent(sectionContent, section);
+        article.append(sectionContent);
       });
       entryContent.append(article);
     });

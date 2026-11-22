@@ -23,7 +23,7 @@ assert.equal((html.match(/<a class="device-card device-card--ready"/g) || []).le
 assert.equal(manifest.start_url, "./");
 assert.equal(manifest.scope, "./");
 assert.equal(manifest.icons.length, 2);
-assert.match(sw, /welding-guide-home-v43/);
+assert.match(sw, /welding-guide-home-v45/);
 assert.match(await read("js/app.js"), /WELDING_POINT = \{ x: 0\.821, y: 0\.646 \}/);
 assert.ok(html.includes("./js/app.js?v=21-aligned"));
 assert.ok(sw.includes("./js/app.js?v=21-aligned"));
@@ -66,12 +66,22 @@ for (const id of ["laser-principles", "history", "safety"]) {
   const page = await read(`pages/${id}.html`);
   assert.ok(page.includes(`data-topic="${id}"`));
   assert.ok(page.includes('href="../index.html"'));
-  assert.ok(page.includes(id === "laser-principles" ? 'src="../js/laser-principles.js?v=10"' : 'src="../js/topics.js?v=' + (id === "safety" ? "31" : "18") + '"'));
+  assert.ok(page.includes(id === "laser-principles" ? 'src="../js/laser-principles.js?v=10"' : 'src="../js/topics.js?v=' + (id === "safety" ? "31" : "33") + '"'));
   assert.ok(page.includes('class="topic-entry"'));
   assert.match(page, /class="entry-content(?:\s[^"]*)?"/);
-  assert.ok(page.includes('href="../css/topics.css?v=19"'));
+  assert.ok(page.includes('href="../css/topics.css?v=' + (id === "history" ? "20" : "19") + '"'));
   assert.doesNotMatch(page, /topic-nav|专题导航/);
   assert.ok(Array.isArray(topics.topics[id].items));
+}
+const historySections = topics.topics.history.items.flatMap((item) => item.sections);
+assert.ok(historySections.length > 0);
+for (const photo of historySections.flatMap((section) => section.images || [])) {
+  assert.match(photo.src, /^\.\.\/assets\/images\/history\/[a-z-]+\.webp\?v=\d+$/);
+  assert.ok(photo.alt && photo.caption);
+  assert.ok(sw.includes(`"${photo.src.slice(1)}"`));
+  const url = new URL(photo.src, new URL("../data/topics.json", import.meta.url));
+  const bytes = await readFile(url);
+  assert.equal(bytes.subarray(8, 12).toString(), "WEBP");
 }
 assert.match(await read("css/style.css"), /prefers-reduced-motion: reduce/);
 for (const icon of ["welding-head", "feature-principle", "feature-history", "feature-safety"]) {
