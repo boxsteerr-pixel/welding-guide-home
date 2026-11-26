@@ -2,7 +2,7 @@
   "use strict";
   const container = document.querySelector("#topic-content");
   const topicId = document.body.dataset.topic;
-  const dataVersion = topicId === "history" ? "35" : "31";
+  const dataVersion = topicId === "history" ? "36" : "31";
   const dataUrl = new URL("../data/topics.json?v=" + dataVersion, location.href);
   const caseTemplate = document.querySelector("#history-case-template");
   const entryContent = caseTemplate ? container : container.querySelector(".entry-content");
@@ -14,8 +14,12 @@
   }
 
   function appendContent(container, item) {
-    (item.paragraphs || []).forEach(function (paragraph) { container.append(element("p", paragraph)); });
-    (item.images || []).forEach(function (photo) {
+    const blocks = item.blocks || (item.paragraphs || []).concat(item.images || []);
+    blocks.forEach(function (photo) {
+      if (typeof photo === "string") {
+        container.append(element("p", photo));
+        return;
+      }
       const url = new URL(photo.src, dataUrl);
       const previewUrl = photo.preview ? new URL(photo.preview.src, dataUrl) : url;
       // Only Home-owned images; no dependencies on any device repository.

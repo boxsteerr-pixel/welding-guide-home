@@ -1,5 +1,5 @@
 {
-  "contentVersion": "0.3.0",
+  "contentVersion": "0.4.0",
   "topics": {
     "laser-principles": { "title": "激光焊接原理", "subtitle": "原理概览 · 工艺基础", "items": [] },
     "history": {
@@ -55,6 +55,61 @@
                 "加强对光闸内部结构的学习。翻板能开闭只是动作检查的一部分，翻板的最终位置和角度还决定了光束在吸收器内的落点。偏离预定区域时，接合处的水封可能受热灼伤。",
                 "类似气缸故障应更换经厂家出厂调试合格的整套光闸。报告要求上机前离线确认气缸伸出和缩回时对应的翻板位置，上机后仅调整对应检测限位。",
                 "本次故障处理时间较长，报告要求复盘检修过程，提炼可缩短处理时间的做法。"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "某机组定修激光焊机故障处理过程",
+          "sections": [
+            {
+              "title": "一、处理经过",
+              "blocks": [
+                "2026年4月25日13点20分，某机组激光焊机焊接自动步无法正常执行，如图1故障编号12150331，故障内容“reflected RF power of driver stage too high”。",
+                { "src": "../assets/images/history/rf-driver-alarm.webp?v=1", "preview": { "src": "../assets/images/history/rf-driver-alarm-preview.webp", "width": 540, "height": 82 }, "alt": "图1 激光焊机首次出现的故障信息", "caption": "图1 激光焊机首次出现的故障信息" },
+                "检查高频柜及激光谐振器内是否有硬件接触不良或松动，未发现异常。尝试复位但故障无法消除，查看末级管输入功率PBi，在无激光时为330W，超过更换要求320W，联系通快公司SV建议更换末极管，于18点30分由通快公司授权后自行更换末极管。",
+                "20点25分，更换末极管后重新预热30分钟，21点在工程师维护模式下出光正常，正常满焊情况下焊机自动步正常，遂交给工艺进行焊接实验。在进行点焊过程中焊机自动步无法启动，故障编号12150650/12150634，故障内容“Rapid shutdown of grid IG2 tripped”/“Rapid switch-off of the IA1 anode current in the HV power supply unit”（图2）。该故障常见于更换新末极管之后，可单次复位后继续出光，但实际多次复位仍持续报警。检查发现，故障报警中仍有“reflected RF power of driver stage too high”。21点32分，询问通快SV，建议断电复位继续尝试，未有实质性改善。22点重新检查末极管是否正常点亮，高频柜内是否有电线管路松动，均无异常。",
+                { "src": "../assets/images/history/rf-new-alarms.webp?v=1", "preview": { "src": "../assets/images/history/rf-new-alarms-preview.webp", "width": 540, "height": 235 }, "alt": "图2 更换末极管后出现的新报警信息", "caption": "图2 更换末极管后出现的新报警信息" },
+                "4月26日9点30分，现场检查谐振腔内部管路是否有松动，及混合气体进气电磁阀是否正常，确认无异常后联系通快SV，待SV进厂后排查故障。",
+                "4月27日9点，通快SV现场检查焊机情况。检查高频柜与谐振腔内部情况，未发现异常。10点30分，将谐振腔与高频柜高频电缆两端接手脱开（图3），摇表测量电缆阻值，阻值正常，接手处无明显烧伤痕迹，同时检查高频电缆外观是否有明显破损情况，未发现异常。",
+                { "src": "../assets/images/history/rf-cable-flange.webp?v=1", "preview": { "src": "../assets/images/history/rf-cable-flange-preview.webp", "width": 540, "height": 580 }, "alt": "图3 高频柜侧高频电缆法兰接手", "caption": "图3 高频柜侧高频电缆法兰接手" },
+                "根据现场报警信息及经验，怀疑驱动级存在问题，遂进行更换（图4），同时更换驱动级与功率反射计相连的同轴电缆，更换后故障仍然存在。驱动级机旁无备件，通过拆相关单位已下机焊机高频柜取得备件更换。",
+                { "src": "../assets/images/history/rf-removed-driver.webp?v=1", "preview": { "src": "../assets/images/history/rf-removed-driver-preview.webp", "width": 540, "height": 482 }, "alt": "图4 下机的驱动级", "caption": "图4 下机的驱动级" },
+                "现场查看报警记录并结合现场情况怀疑高频电缆在坦克链中弯曲角度过大，且定修更换双切剪刀片，可能存在意外划破电缆外皮等问题，连续尝试观察电缆外部是否有破损或打火情况，可观察部分未发现明显异常，但电缆桥架部分仍可能存在问题，遂建议彻底更换高频电缆（图5）。18点，检修单位到达现场，更换焊机高频电缆。20点30分，更换高频电缆后故障仍然存在，SV重新将下机的末极管上机，继续测试。",
+                { "src": "../assets/images/history/rf-replacement-cable.webp?v=1", "preview": { "src": "../assets/images/history/rf-replacement-cable-preview.webp", "width": 540, "height": 326 }, "alt": "图5 更换高频电缆", "caption": "图5 更换高频电缆" },
+                "21点，SV通过HMI数据怀疑LS3控制器存在异常（图6），遂更换，报警仍然存在。LS3备件为通快公司提供，需将下机的LS3送回公司检查。",
+                { "src": "../assets/images/history/rf-ls-controller.webp?v=1", "preview": { "src": "../assets/images/history/rf-ls-controller-preview.webp", "width": 540, "height": 300 }, "alt": "图6 LS3", "caption": "图6 LS3" },
+                "23点30分，因定修时更换激光源冷却用纯水，且更换后电导率40μS左右（图7），与更换后纯水实际电导率有偏差，遂前往现场取水点重新接取约40L纯水更换。更换后电导率降为10μS左右，但故障仍存在。",
+                { "src": "../assets/images/history/rf-water-conductivity.webp?v=1", "preview": { "src": "../assets/images/history/rf-water-conductivity-preview.webp", "width": 540, "height": 300 }, "alt": "图7 更换后电导率数值", "caption": "图7 更换后电导率数值" },
+                "4月28日8点30分，确认前一晚进行的所有满焊的焊接实验共计50余次均未出现异常情况，但实际点焊仍存在异常，遂前往相关单位拆已下机的功率反射计，10点利用机组穿带空隙时间更换功率反射计（图8），13点重新进行焊接实验，故障仍然存在。14点30分，机组穿带完成，SV重新检查高频柜内电容及末极管阻值，均未发现异常，遂呼叫另一通快SV于4月29日现场检查。",
+                { "src": "../assets/images/history/rf-power-reflectometer.webp?v=1", "preview": { "src": "../assets/images/history/rf-power-reflectometer-preview.webp", "width": 286, "height": 720 }, "alt": "图8 功率反射计", "caption": "图8 功率反射计" },
+                "4月29日13点，在不断地通过工程师维护模式出光尝试后，观察到一次异常现象，输出功率为0且PBi突然增大（如图9），且报警履历中对故障出现可能原因的分析包括线圈阻值不到50Ω（如图10）。因此，怀疑高频柜内驱动级输出PCB板卡异常。将板卡取下后发现电感线圈的滑动变阻器螺丝可用手轻松拧开，遂取下螺丝。螺丝取下后观察到滑阻与线圈接触面已发黑（图12），且接触面积远小于正常情况下的接触面积，用砂纸将发黑部分打磨干净后重新回装上机，预热后重新出光，焊机激光源正常出光，焊机恢复正常，重新开始焊接实验并穿带开机。",
+                { "src": "../assets/images/history/rf-abnormal-readings.webp?v=1", "preview": { "src": "../assets/images/history/rf-abnormal-readings-preview.webp", "width": 540, "height": 332 }, "alt": "图9 现场测试后异常数据", "caption": "图9 现场测试后异常数据" },
+                { "src": "../assets/images/history/rf-alarm-details.webp?v=1", "preview": { "src": "../assets/images/history/rf-alarm-details-preview.webp", "width": 540, "height": 260 }, "alt": "图10 HMI故障信息详细原因分析", "caption": "图10 HMI故障信息详细原因分析" },
+                "目前确认包括已下机和上机的更换部件全部正常，均可做备件继续使用。"
+              ]
+            },
+            {
+              "title": "二、异常原因",
+              "blocks": [
+                "RF高频发生柜内驱动级输出PCB板卡上的电感线圈的滑动变阻器的螺丝松动，造成滑阻与线圈未完全接触，接触部分变黑，间歇性影响线圈阻值，与现场激光焊机偶尔可以启动的实际情况相吻合。",
+                { "src": "../assets/images/history/rf-driver-board.webp?v=1", "preview": { "src": "../assets/images/history/rf-driver-board-preview.webp", "width": 540, "height": 412 }, "alt": "图11 高频柜内驱动级输出PCB板卡", "caption": "图11 高频柜内驱动级输出PCB板卡" },
+                { "src": "../assets/images/history/rf-slider-parts.webp?v=1", "preview": { "src": "../assets/images/history/rf-slider-parts-preview.webp", "width": 397, "height": 720 }, "alt": "图12a 电感线圈滑动变阻器异常发黑部分", "caption": "图12a 电感线圈滑动变阻器异常发黑部分" },
+                { "src": "../assets/images/history/rf-contact-darkening.webp?v=1", "preview": { "src": "../assets/images/history/rf-contact-darkening-preview.webp", "width": 540, "height": 402 }, "alt": "图12b 电感线圈滑动变阻器异常发黑部分", "caption": "图12b 电感线圈滑动变阻器异常发黑部分" }
+              ]
+            },
+            {
+              "title": "三、后续措施",
+              "blocks": [
+                "1、备件补充，梳理消耗的清单。下表为处理本次故障更换的备件清单（细化、型号、装机量、消耗量、借用量、单价）",
+                "表1 某机组激光焊机异常备件消耗清单",
+                "1、末级管，使用数量 1。机旁仍有备件，更换后下机可使用。",
+                "2、高频电缆，使用数量 1。机旁仍有备件，更换后下机可使用。",
+                "3、控制单元LS3，使用数量 1。通快厂家提供。",
+                "4、驱动级，使用数量 1。相关单位借用1个。",
+                "5、驱动级同轴电缆，使用数量 1。物料代码待新增。",
+                "6、功率反射计，使用数量 1。相关单位借用1个。物料代码待新增。",
+                "2、消化激光源技术资料，了解高频柜基本工作原理，提升故障处理能力。"
               ]
             }
           ]
